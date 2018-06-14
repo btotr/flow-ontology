@@ -1,3 +1,3 @@
-#Flow Ontology
+# Flow Ontology
 
-Flow uses RDF to formalise the Flow Methodology. This repository provides the sources.
+Flow uses RDF to formalise the Flow Methodology. This repository provide the sources.
