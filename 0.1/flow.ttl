@@ -1,0 +1,79 @@
+@prefix : <http://flow.recipes/0.1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://flow.recipes/0.1> .
+
+<http://flow.recipes/0.1> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+:hasMethode rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+    rdfs:domain :Instruction ;
+    rdfs:range :Methode ;
+    rdfs:label "hasDirection"@en .
+
+:hasCase rdf:type owl:ObjectProperty ;
+    rdfs:domain [ rdf:type owl:Class ;
+                    owl:unionOf ( :Case :Instruction )
+                ] ;
+    rdfs:range :Case .
+
+:hasComponent rdf:type owl:ObjectProperty ;
+    rdfs:domain :Instruction ;
+    rdfs:range :Component .
+
+:hasComponentUnit rdf:type owl:ObjectProperty ;
+    rdfs:domain :Instruction ;
+    rdfs:range :ComponentUnit .
+
+:hasInstruction rdf:type owl:ObjectProperty ;
+    rdfs:domain [ rdf:type owl:Class ;
+                    owl:unionOf ( :Case :Instruction )
+                ] ;
+    rdfs:range :Instruction .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+:componentAddition rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :ComponentUnit ;
+    rdfs:range xsd:string .
+
+:directions rdf:type owl:DatatypeProperty ,
+                     owl:FunctionalProperty ;
+    rdfs:domain :Instruction ;
+    rdfs:range xsd:string .
+
+:weight rdf:type owl:DatatypeProperty ,
+                 owl:FunctionalProperty ;
+    rdfs:domain :ComponentUnit ;
+    rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+:Case rdf:type owl:Class .
+
+:Component rdf:type owl:Class .
+
+:Ingredient rdf:type owl:Class ;
+            rdfs:subClassOf :Component .
+
+:Recipe rdf:type owl:Class ;
+        rdfs:subClassOf :Component .
+
+:ComponentUnit rdf:type owl:Class .
+
+:Instruction rdf:type owl:Class .
+
+:Methode rdf:type owl:Class ;
+           rdfs:label "Methode"@nl .

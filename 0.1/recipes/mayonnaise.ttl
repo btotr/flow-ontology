@@ -1,0 +1,56 @@
+@prefix : <http://flow.recipes/0.1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://flow.recipes/0.1> .
+
+:mayonnaise rdf:type owl:NamedIndividual , :Recipe ;
+    :hasInstruction :loskloppenInstruction .
+    
+### INSTRUCTIONS
+
+:kloppenInstruction rdf:type owl:NamedIndividual , :Instruction ;
+    :hasInstruction :mengenInstruction ; 
+    :hasMethode :beat ;
+    :hasComponentUnit [
+	    :hasComponent :peanutOil ;
+        :weight 200 
+    ] ;
+    :hasComponentUnit [
+	    :hasComponent :oliveOil ;
+        :weight 50
+    ] ;
+    :directions "In kleine delen toevoegen"@nl .
+
+:loskloppenInstruction rdf:type owl:NamedIndividual , :Instruction ;
+    :hasInstruction :kloppenInstruction ;
+    :hasMethode :drop ;
+    :hasComponentUnit [
+        :hasComponent :egg ;
+        :componentAddition "1"^^xsd:string ;
+        :weight 60 
+	] ;
+	:hasComponentUnit [
+        :hasComponent :mustard ;
+        :componentAddition "dijon"^^xsd:string ;
+        :weight 10 
+    ] .
+
+:mengenInstruction rdf:type owl:NamedIndividual , :Instruction ;
+    :hasMethode :mix ;
+    :hasComponentUnit [
+        :hasComponent :lemon ;
+        :componentAddition "½"^^xsd:string ;
+        :weight 20 
+	] ;
+    :hasComponentUnit [
+        :hasComponent :pepper ;
+	] ;
+    :hasComponentUnit [
+        :hasComponent :salt ;
+	] ;
+    :hasComponentUnit [
+	    :hasComponent :whey ;
+        :weight 5 
+    ].

@@ -1,0 +1,8 @@
+:beat rdf:type owl:NamedIndividual , :Methode ;
+    rdfs:label "kloppen"@nl , "beat"@en .
+
+:drop rdf:type owl:NamedIndividual , :Methode ;
+    rdfs:label "loskloppen"@nl , "drop"@en  .
+
+:mix rdf:type owl:NamedIndividual , :Methode ;
+    rdfs:label "mengen"@nl , "mix"@en  .

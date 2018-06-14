@@ -1,0 +1,27 @@
+# https://www.ebi.ac.uk/ols/ontologies/foodon/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FFOODON_03306361
+
+:peanutOil rdf:type owl:NamedIndividual , :Ingredient ;
+    rdfs:label "arachideolie"@nl, "peanut oil"@en .
+
+:lemon rdf:type owl:NamedIndividual , :Ingredient ;
+    rdfs:label "citroen"@nl, "lemon"@en .
+
+:egg rdf:type owl:NamedIndividual , :Ingredient ;
+    rdfs:label "ei"@nl, "egg"@en .
+
+:salt rdf:type owl:NamedIndividual , :Ingredient ;
+    rdfs:label "zout"@nl, "salt"@en .
+    owl:sameAs <http://dbpedia.org/resource/Salt>
+    
+:mustard rdf:type owl:NamedIndividual , :Ingredient ;
+    rdfs:label "mosterd"@nl, "mustard"@en ;
+    owl:samAs <http://purl.obolibrary.org/obo/FOODON_03306361>
+
+:oliveOil rdf:type owl:NamedIndividual , :Ingredient ;
+    rdfs:label "olijfolie"@nl, "olive-oil"@en .
+
+:pepper rdf:type owl:NamedIndividual , :Ingredient ;
+    rdfs:label "peper"@nl, "pepper"@en .
+
+:whey rdf:type owl:NamedIndividual , :Ingredient ;
+    rdfs:label "wei"@nl, "whey"@en .
