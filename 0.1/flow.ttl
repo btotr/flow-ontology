@@ -69,7 +69,8 @@
             rdfs:subClassOf :Component .
 
 :Recipe rdf:type owl:Class ;
-        rdfs:subClassOf :Component .
+        rdfs:subClassOf :Component ;
+        owl:equivalentClass <http://schema.org/Recipe#> .
 
 :ComponentUnit rdf:type owl:Class .
 

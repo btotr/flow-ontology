@@ -1,0 +1,51 @@
+@prefix : <http://flow.recipes/0.1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix recipe: <http://schema.org/Recipe#> .
+@base <http://flow.recipes/0.1> .
+
+:hummus rdf:type owl:NamedIndividual , recipe:Recipe ;
+    rdfs:label "Hummus" ;
+    recipe:recipeInstructions :hummusRoastInstruction ;
+    recipe:prepTime "PT10M" .
+    
+### INSTRUCTIONS
+
+:hummusRoastInstruction rdf:type owl:NamedIndividual , :Instruction ;
+    :hasInstruction :hummusGrindInstruction ;
+    :hasMethode :roast;
+    :hasComponentUnit [
+        :hasComponent :sesameSeed ;
+        :weight 40 
+	] ;
+	:directions "regelmatig schudden"@nl .
+
+:hummusGrindInstruction rdf:type owl:NamedIndividual , :Instruction ;
+    :hasInstruction :hummusMixInstruction ; 
+    :hasMethode :grind ;
+    :hasComponentUnit [
+	    :hasComponent :lemonJuice ;
+	    :componentAddition "½"^^xsd:string ;
+        :weight 20 
+    ] ;
+    :hasComponentUnit [
+	    :hasComponent :chickPea ;
+        :weight 250
+    ] ;
+    :hasComponentUnit [
+	    :hasComponent :cayennePepper ;
+    ] ;
+    :hasComponentUnit [
+	    :hasComponent :salt ;
+    ] .
+
+
+:hummusMixInstruction rdf:type owl:NamedIndividual , :Instruction ;
+    :hasMethode :mix ;
+    :hasComponentUnit [
+	    :hasComponent :oliveOil ;
+	    :componentAddition "x-vierge"^^xsd:string ;
+        :weight 20 
+    ].

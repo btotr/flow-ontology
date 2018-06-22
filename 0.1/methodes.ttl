@@ -1,3 +1,11 @@
+@prefix : <http://flow.recipes/0.1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix recipe: <http://schema.org/Recipe#> .
+@base <http://flow.recipes/0.1> .
+
 :beat rdf:type owl:NamedIndividual , :Methode ;
     rdfs:label "kloppen"@nl , "beat"@en .
 
@@ -6,3 +14,9 @@
 
 :mix rdf:type owl:NamedIndividual , :Methode ;
     rdfs:label "mengen"@nl , "mix"@en  .
+    
+:roast rdf:type owl:NamedIndividual , :Methode ;
+    rdfs:label "roosteren"@nl , "roast"@en  .
+    
+:grind rdf:type owl:NamedIndividual , :Methode ;
+    rdfs:label "blenden"@nl , "grind"@en  .
