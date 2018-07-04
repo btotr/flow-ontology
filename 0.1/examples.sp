@@ -50,9 +50,9 @@ HAVING (?totalFiber > 10)
 SELECT  ?recipes
 WHERE {
 
-   ?recipe a recipe:Recipe .
-   ?recipe rdfs:label "Mayonnaise"@nl .
-   ?recipe owl:sameAs ?ingredient .
+  ?recipe a recipe:Recipe .
+  ?recipe rdfs:label "Mayonnaise"@nl .
+  ?recipe owl:sameAs ?ingredient .
   
   SERVICE <http://dbpedia.org/sparql> {    
 	?ingredient rdfs:label "Mayonnaise"@en .
