@@ -70,7 +70,7 @@
             skos:inScheme :ingredientsSchema ;
             rdfs:subClassOf :Component .
 
-:Recipe rdf:type owl:Class skos:Concept ;
+:Recipe rdf:type owl:Class, skos:Concept ;
         skos:inScheme :ingredientsSchema ;
         rdfs:subClassOf :Component ;
         owl:equivalentClass <http://schema.org/Recipe#> .

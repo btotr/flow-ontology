@@ -10,9 +10,9 @@
 @base <http://flow.recipes/0.1> .
 
 :methodesSchema rdf:type skos:ConceptScheme ;
-  dct:title "Flow methodes schema" ;
+  dct:title "Flow methodes schema" .
 
-:beat rdf:type owl:NamedIndividual , :Methode ;
+:beat rdf:type owl:NamedIndividual,  :Methode ;
      skos:prefLabel "kloppen"@nl , "beat"@en .
 
 :drop rdf:type owl:NamedIndividual , :Methode ;
