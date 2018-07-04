@@ -23,7 +23,7 @@ WHERE {
   ?recipe a recipe:Recipe .
   ?recipe rdfs:label ?name .
   ?recipe recipe:recipeInstructions ?instruction .
-  ?instruction flow:hasInstruction*/flow:hasMethode/skos:label "roosteren"@nl .
+  ?instruction flow:hasInstruction*/flow:hasMethode/skos:prefLabel "roosteren"@nl .
 }
 
 # recipes which provide more than 10g fibers
