@@ -1,38 +1,58 @@
+@prefix : <http://flow.recipes/0.1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix recipe: <http://schema.org/Recipe#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://www.purl.org/dc/terms/> .
+
+@base <http://flow.recipes/0.1> .
+
+:oil rdf:type owl:NamedIndividual , :Ingredient ;
+    skos:prefLabel "olie"@nl, "oil"@en ;
+    skos:altLabel "plantaardige olie"@nl .
+
+:ingredientsSchema rdf:type skos:ConceptScheme ;
+    skos:editorialNote "Not sure if we need our own schema or leverage an existing such-as AGROVOC" ;
+    dct:title "Flow ingredients schema" .
+
 :peanutOil rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "arachideolie"@nl, "peanut oil"@en .
+    skos:prefLabel "arachideolie"@nl, "peanut oil"@en .
 
 :egg rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "ei"@nl, "egg"@en .
+    skos:prefLabel "ei"@nl, "egg"@en .
 
 :salt rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "zout"@nl, "salt"@en ;
+    skos:prefLabel "zout"@nl, "salt"@en ;
     owl:sameAs <http://dbpedia.org/resource/Salt> .
     
 :mustard rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "mosterd"@nl, "mustard"@en ;
+   skos:prefLabel "mosterd"@nl, "mustard"@en ;
     owl:samAs <http://purl.obolibrary.org/obo/FOODON_03306361> ;
-    <http://schema.org/fiberContent> 3.3.
+    <http://schema.org/fiberContent> "3.3"^^xsd:double .
 
 :oliveOil rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "olijfolie"@nl, "olive-oil"@en .
+    skos:prefLabel "olijfolie"@nl, "olive-oil"@en .
 
 :pepper rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "peper"@nl, "pepper"@en .
+    skos:prefLabel "peper"@nl, "pepper"@en .
 
 :whey rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "wei"@nl, "whey"@en .
+    skos:prefLabel "wei"@nl, "whey"@en .
     
 :sesameSeed rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "sesamzaad"@nl, "sesame seed"@en ;
-    <http://schema.org/fiberContent> 12.
+    skos:prefLabel "sesamzaad"@nl, "sesame seed"@en ;
+    <http://schema.org/fiberContent> "12"^^xsd:double.
 
 :lemonJuice rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "citroensap"@nl, "lemon juice"@en ;
-    <http://schema.org/fiberContent> 2.8.
+    skos:prefLabel "citroensap"@nl, "lemon juice"@en ;
+    <http://schema.org/fiberContent> "2.8"^^xsd:double.
     
 :chickPea rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "kikkererwten"@nl, "chick pea"@en ;
-    <http://schema.org/fiberContent> 17.
+    skos:prefLabel "kikkererwten"@nl, "chick pea"@en ;
+    <http://schema.org/fiberContent> "17"^^xsd:double .
 
 :cayennePepper rdf:type owl:NamedIndividual , :Ingredient ;
-    rdfs:label "cayennepeper"@nl, "Cayenne pepper"@en .
+   skos:prefLabel "cayennepeper"@nl, "Cayenne pepper"@en .
+    

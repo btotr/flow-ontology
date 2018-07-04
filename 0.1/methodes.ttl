@@ -4,19 +4,25 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix recipe: <http://schema.org/Recipe#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://www.purl.org/dc/terms/> .
+
 @base <http://flow.recipes/0.1> .
 
+:methodesSchema rdf:type skos:ConceptScheme ;
+  dct:title "Flow methodes schema" ;
+
 :beat rdf:type owl:NamedIndividual , :Methode ;
-    rdfs:label "kloppen"@nl , "beat"@en .
+     skos:prefLabel "kloppen"@nl , "beat"@en .
 
 :drop rdf:type owl:NamedIndividual , :Methode ;
-    rdfs:label "loskloppen"@nl , "drop"@en  .
+    skos:prefLabel "loskloppen"@nl , "drop"@en  .
 
 :mix rdf:type owl:NamedIndividual , :Methode ;
-    rdfs:label "mengen"@nl , "mix"@en  .
+     skos:prefLabel "mengen"@nl , "mix"@en  .
     
 :roast rdf:type owl:NamedIndividual , :Methode ;
-    rdfs:label "roosteren"@nl , "roast"@en  .
+     skos:prefLabel "roosteren"@nl , "roast"@en  .
     
 :grind rdf:type owl:NamedIndividual , :Methode ;
-    rdfs:label "blenden"@nl , "grind"@en  .
+     skos:prefLabel "blenden"@nl , "grind"@en  .

@@ -3,6 +3,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @base <http://flow.recipes/0.1> .
 
 <http://flow.recipes/0.1> rdf:type owl:Ontology .
@@ -65,10 +66,12 @@
 
 :Component rdf:type owl:Class .
 
-:Ingredient rdf:type owl:Class ;
+:Ingredient rdf:type owl:Class, skos:Concept ;
+            skos:inScheme :ingredientsSchema ;
             rdfs:subClassOf :Component .
 
-:Recipe rdf:type owl:Class ;
+:Recipe rdf:type owl:Class skos:Concept ;
+        skos:inScheme :ingredientsSchema ;
         rdfs:subClassOf :Component ;
         owl:equivalentClass <http://schema.org/Recipe#> .
 
@@ -76,5 +79,6 @@
 
 :Instruction rdf:type owl:Class .
 
-:Methode rdf:type owl:Class ;
-           rdfs:label "Methode"@nl .
+:Methode rdf:type owl:Class, skos:Concept ;
+        skos:inScheme :methodesSchema ;
+        rdfs:label "Methode"@nl .
