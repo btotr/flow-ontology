@@ -5,13 +5,14 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
 prefix recipe: <http://schema.org/Recipe#> 
 prefix dbo: <http://dbpedia.org/ontology/>
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
 
 # all recipes
 
 SELECT ?name
 WHERE {
   ?recipe a recipe:Recipe .
-  ?recipe recipe:label ?name .
+  ?recipe rdfs:label ?name .
 }
 LIMIT 25
 
@@ -22,7 +23,7 @@ WHERE {
   ?recipe a recipe:Recipe .
   ?recipe rdfs:label ?name .
   ?recipe recipe:recipeInstructions ?instruction .
-  ?instruction flow:hasInstruction*/flow:hasMethode/rdfs:label "roosteren"@nl .
+  ?instruction flow:hasInstruction*/flow:hasMethode/skos:prefLabel "roosteren"@nl .
 }
 
 # recipes which provide more than 10g fibers
