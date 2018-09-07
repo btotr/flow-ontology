@@ -4,6 +4,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://www.purl.org/dc/terms/> .
 @base <http://flow.recipes/0.1> .
 
 <http://flow.recipes/0.1> rdf:type owl:Ontology .
@@ -15,7 +16,8 @@
 :hasMethode rdf:type owl:ObjectProperty ,
                        owl:FunctionalProperty ;
     rdfs:domain :Instruction ;
-    rdfs:range :Methode ;
+    rdfs:range skos:Concept ;
+        skos:inScheme :methodesSchema ;
     rdfs:label "hasDirection"@en .
 
 :hasCase rdf:type owl:ObjectProperty ;
@@ -66,12 +68,10 @@
 
 :Component rdf:type owl:Class .
 
-:Ingredient rdf:type owl:Class, skos:Concept ;
-            skos:inScheme :ingredientsSchema ;
+:Ingredient rdf:type owl:Class ;
             rdfs:subClassOf :Component .
 
-:Recipe rdf:type owl:Class skos:Concept ;
-        skos:inScheme :ingredientsSchema ;
+:Recipe rdf:type owl:Class;
         rdfs:subClassOf :Component ;
         owl:equivalentClass <http://schema.org/Recipe#> .
 
@@ -79,6 +79,106 @@
 
 :Instruction rdf:type owl:Class .
 
-:Methode rdf:type owl:Class, skos:Concept ;
-        skos:inScheme :methodesSchema ;
+:Methode rdf:type owl:Class;
         rdfs:label "Methode"@nl .
+        
+#################################################################
+#    ingredients
+#################################################################       
+
+:ingredientsSchema rdf:type skos:ConceptScheme ;
+    skos:editorialNote "Not sure if we need our own schema or leverage an existing such-as AGROVOC" ;
+    dct:title "Flow ingredients schema" .
+    
+
+:oil rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+    skos:prefLabel "olie"@nl, "oil"@en ;
+    skos:altLabel "plantaardige olie"@nl .
+
+:peanutOil rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+    skos:prefLabel "arachideolie"@nl, "peanut oil"@en ;
+    skos:broader :oil .
+
+:egg rdf:type  skos:Concept,:Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+    skos:prefLabel "ei"@nl, "egg"@en .
+
+:salt rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+    skos:prefLabel "zout"@nl, "salt"@en ;
+    owl:sameAs <http://dbpedia.org/resource/Salt> .
+    
+:mustard rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+   skos:prefLabel "mosterd"@nl, "mustard"@en ;
+    owl:samAs <http://purl.obolibrary.org/obo/FOODON_03306361> ;
+    <http://schema.org/fiberContent> "3.3"^^xsd:double .
+
+:oliveOil rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+    skos:prefLabel "olijfolie"@nl, "olive-oil"@en ;
+    skos:broader :oil .
+
+:pepper rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+    skos:prefLabel "peper"@nl, "pepper"@en .
+
+:whey rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+    skos:prefLabel "wei"@nl, "whey"@en .
+    
+:sesameSeed rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+    skos:prefLabel "sesamzaad"@nl, "sesame seed"@en ;
+    <http://schema.org/fiberContent> "12"^^xsd:double.
+
+:lemonJuice rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+    skos:prefLabel "citroensap"@nl, "lemon juice"@en ;
+    <http://schema.org/fiberContent> "2.8"^^xsd:double.
+    
+:chickPea rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+    skos:prefLabel "kikkererwten"@nl, "chick pea"@en ;
+    <http://schema.org/fiberContent> "17"^^xsd:double .
+
+:cayennePepper rdf:type  skos:Concept, :Ingredient ;
+            skos:inScheme :ingredientsSchema ;
+   skos:prefLabel "cayennepeper"@nl, "Cayenne pepper"@en ;
+   skos:broader :pepper .
+   
+:seasoning a skos:Collection ;
+	skos:prefLabel "seasoning"@en ;
+	skos:member :salt , :pepper ..   
+   
+#################################################################
+#    methodes
+#################################################################    
+    
+:methodesSchema rdf:type skos:ConceptScheme ;
+  dct:title "Flow methodes schema" .
+
+:beat rdf:type  skos:Concept, :Methode;
+        skos:inScheme :methodesSchema ;
+     skos:prefLabel "kloppen"@nl , "beat"@en .
+
+:drop rdf:type  skos:Concept, :Methode ;
+        skos:inScheme :methodesSchema ;
+	    skos:broader :beat ;
+        skos:prefLabel "loskloppen"@nl , "drop"@en  ;
+        skos:broader :beat .
+
+:mix rdf:type  skos:Concept, :Methode ;
+        skos:inScheme :methodesSchema ;
+     skos:prefLabel "mengen"@nl , "mix"@en  .
+    
+:roast rdf:type  skos:Concept, :Methode ;
+        skos:inScheme :methodesSchema ;
+     skos:prefLabel "roosteren"@nl , "roast"@en  .
+    
+:grind rdf:type  skos:Concept, :Methode ;
+        skos:inScheme :methodesSchema ;
+     skos:prefLabel "blenden"@nl , "grind"@en  .
+     
