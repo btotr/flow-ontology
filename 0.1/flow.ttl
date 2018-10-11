@@ -16,8 +16,7 @@
 :hasMethode rdf:type owl:ObjectProperty ,
                        owl:FunctionalProperty ;
     rdfs:domain :Instruction ;
-    rdfs:range skos:Concept ;
-        skos:inScheme :methodesSchema ;
+    rdfs:range :Method ;
     rdfs:label "hasDirection"@en .
 
 :hasCase rdf:type owl:ObjectProperty ;
@@ -79,5 +78,5 @@
 
 :Instruction rdf:type owl:Class .
 
-:Methode rdf:type owl:Class;
+:Method rdf:type owl:Class;
         rdfs:label "Methode"@nl .
