@@ -13,7 +13,7 @@
 #    Object Properties
 #################################################################
 
-:hasMethode rdf:type owl:ObjectProperty ,
+:hasMethod rdf:type owl:ObjectProperty ,
                        owl:FunctionalProperty ;
     rdfs:domain :Instruction ;
     rdfs:range :Method ;
