@@ -16,7 +16,7 @@
 
 :loskloppenInstruction rdf:type owl:NamedIndividual , :Instruction ;
     :hasInstruction :kloppenInstruction ;
-    :hasMethode :drop ;
+    :hasMethod :drop ;
     :hasComponentUnit [
         :hasComponent :egg ;
         :componentAddition "1"^^xsd:string ;
@@ -30,7 +30,7 @@
 
 :kloppenInstruction rdf:type owl:NamedIndividual , :Instruction ;
     :hasInstruction :mengenInstruction ; 
-    :hasMethode :beat ;
+    :hasMethod :beat ;
     :hasComponentUnit [
 	    :hasComponent :peanutOil ;
         :weight 200 
@@ -43,7 +43,7 @@
     :directions "In kleine delen toevoegen"@nl .
 
 :mengenInstruction rdf:type owl:NamedIndividual , :Instruction ;
-    :hasMethode :mix ;
+    :hasMethod :mix ;
     :hasComponentUnit [
         :hasComponent :lemonJuice ;
         :componentAddition "½"^^xsd:string ;

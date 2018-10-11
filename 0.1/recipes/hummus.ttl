@@ -15,7 +15,7 @@
 
 :hummusRoastInstruction rdf:type owl:NamedIndividual , :Instruction ;
     :hasInstruction :hummusGrindInstruction ;
-    :hasMethode :roast;
+    :hasMethod :roast;
     :hasComponentUnit [
         :hasComponent :sesameSeed ;
         :weight 40 
@@ -24,7 +24,7 @@
 
 :hummusGrindInstruction rdf:type owl:NamedIndividual , :Instruction ;
     :hasInstruction :hummusMixInstruction ; 
-    :hasMethode :grind ;
+    :hasMethod :grind ;
     :hasComponentUnit [
 	    :hasComponent :lemonJuice ;
 	    :componentAddition "½"^^xsd:string ;
@@ -43,7 +43,7 @@
 
 
 :hummusMixInstruction rdf:type owl:NamedIndividual , :Instruction ;
-    :hasMethode :mix ;
+    :hasMethod :mix ;
     :hasComponentUnit [
 	    :hasComponent :oliveOil ;
 	    :componentAddition "x-vierge"^^xsd:string ;
