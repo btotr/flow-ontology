@@ -1,0 +1,573 @@
+@prefix : <http://flow.recipes/0.1#> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+owl:imports <../flow.ttl> .
+
+
+:c_ef0afd9d skos:prefLabel "wokken"@nl .
+
+:pekelen skos:broader :c_04f7c8f7 .
+
+
+:c_ef0afd9d skos:broader :mustard .
+
+:methodesScheme skos:hasTopConcept :c_04f7c8f7 .
+
+:c_ef0afd9d skos:topConceptOf :methodesScheme .
+
+:c_04f7c8f7 dct:modified "2018-09-18T09:32:22.303Z"^^xsd:dateTime .
+
+:c_ef0afd9d dct:created "2018-09-25T09:21:27.898Z"^^xsd:dateTime .
+
+:c_c27250ec skos:prefLabel "fermentatie"@nl ;
+	dct:modified "2018-09-18T09:33:46.195Z"^^xsd:dateTime .
+
+:methodesScheme skos:hasTopConcept :bereiden .
+
+:beat dct:modified "2018-09-18T09:35:19.273Z"^^xsd:dateTime .
+
+:pekelen skos:altLabel "zouten"@nl .
+
+:c_c27250ec a skos:Concept ;
+	skos:broader :c_04f7c8f7 ;
+	skos:inScheme :methodesScheme .
+
+:c_cae54a82 skos:definition """
+deeg, be­slag gaar en eet­baar ma­ken door het (meest­al in een vorm of pan) in een sterk ver­hit­te oven of op een heet vuur te zet­ten"""@nl .
+
+:beat a skos:Concept .
+
+:c_cae54a82 skos:topConceptOf :methodesScheme .
+
+:beat skos:prefLabel "beat"@en , "kloppen"@nl .
+
+:whey dct:modified "2018-09-13T08:48:05.545Z"^^xsd:dateTime .
+
+:cayennePepper a skos:Concept ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "Cayenne pepper"@en , "cayennepeper"@nl .
+
+:chickPea <http://schema.org/fiberContent> "17"^^xsd:double ;
+	skos:broader :c_7c29a65f ;
+	a skos:Concept ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "chick pea"@en , "kikkererwten"@nl .
+
+:barderen dct:modified "2018-09-18T07:08:43.118Z"^^xsd:dateTime .
+
+:c_cae54a82 dct:created "2018-09-18T09:21:01.879Z"^^xsd:dateTime .
+
+:c_ef0afd9d a skos:Concept .
+
+:c_cae54a82 a skos:Concept .
+
+:skosCollection_23204c7a skos:member :roerbakken , :karameliseren .
+
+:methodesScheme dct:modified "2018-09-19T08:14:54.482Z"^^xsd:dateTime .
+
+:skosCollection_23204c7a dct:modified "2018-09-13T10:42:42.838Z"^^xsd:dateTime .
+
+:roast dct:modified "2018-09-13T08:45:08.072Z"^^xsd:dateTime .
+
+:drop a skos:Concept .
+
+:barderen skos:inScheme :methodesScheme .
+
+:drop skos:prefLabel "drop"@en , "loskloppen"@nl .
+
+:egg skos:broader :c_7c29a65f ;
+	a skos:Concept ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "egg"@en , "ei"@nl .
+
+:barderen skos:broader :bereiden .
+
+:grind a skos:Concept .
+
+:beat skos:inScheme :methodesScheme .
+
+:grind skos:prefLabel "grind"@en , "blenden"@nl .
+
+:mix dct:modified "2018-09-18T09:30:55.780Z"^^xsd:dateTime .
+
+:c_04f7c8f7 skos:definition "Conserveren is het verduurzamen en in goede conditie bewaren van objecten, organismen, levensmiddelen, geneesmiddelen of andere zaken"@nl .
+
+:c_ef0afd9d dct:modified "2018-09-25T09:22:27.163Z"^^xsd:dateTime .
+
+:c_cae54a82 skos:inScheme :methodesScheme .
+
+:ingredientsSchema dct:modified "2018-09-19T08:15:16.051Z"^^xsd:dateTime .
+
+:c_c27250ec dct:created "2018-09-18T09:33:08.075Z"^^xsd:dateTime .
+
+:skosCollection_23204c7a skos:member :stomen .
+
+:salt dct:modified "2018-09-19T08:27:08.342Z"^^xsd:dateTime .
+
+:c_ef0afd9d skos:inScheme :ingredientsSchema .
+
+:skosCollection_23204c7a skos:member :gratineren , :poffen .
+
+:oil dct:modified "2018-09-19T08:27:12.573Z"^^xsd:dateTime .
+
+:c_04f7c8f7 skos:topConceptOf :methodesScheme .
+
+:skosCollection_23204c7a skos:prefLabel "verhitten"@nl .
+
+:fruiten dct:modified "2018-09-19T08:30:45.988Z"^^xsd:dateTime .
+
+:skosCollection_23204c7a skos:member :frituren , :fruiten .
+
+:blancheren skos:inScheme :methodesScheme .
+
+:ingredientsSchema <http://www.purl.org/dc/terms/title> "Flow ingredients schema" ;
+	a skos:ConceptScheme ;
+	skos:editorialNote "Not sure if we need our own schema or leverage an existing such-as AGROVOC" .
+
+:lemonJuice <http://schema.org/fiberContent> "2.8"^^xsd:double ;
+	skos:broader :c_7c29a65f ;
+	a skos:Concept ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "lemon juice"@en , "citroensap"@nl .
+
+:drogen skos:inScheme :methodesScheme .
+
+:drop skos:inScheme :methodesScheme .
+
+:beat skos:broader :bereiden .
+
+:mix a skos:Concept .
+
+:frituren skos:inScheme :methodesScheme .
+
+:mix skos:prefLabel "mix"@en , "mengen"@nl .
+
+:mustard <http://schema.org/fiberContent> "3.3"^^xsd:double .
+
+:stomen dct:modified "2018-09-13T08:47:20.931Z"^^xsd:dateTime .
+
+:mustard a skos:Concept ;
+	owl:samAs <http://purl.obolibrary.org/obo/FOODON_03306361> ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "mustard"@en , "mosterd"@nl .
+
+<http://flow.recipes/0.1#konfijten_(zoet)> skos:prefLabel "konfijten_(zoet)"@nl .
+
+:oil a skos:Concept ;
+	skos:altLabel "plantaardige olie"@nl ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "oil"@en , "olie"@nl .
+
+:karameliseren dct:modified "2018-09-13T10:37:16.789Z"^^xsd:dateTime .
+
+:oliveOil a skos:Concept ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "olive-oil"@en , "olijfolie"@nl .
+
+:lemonJuice dct:modified "2018-09-13T08:46:48.147Z"^^xsd:dateTime .
+
+:peanutOil a skos:Concept ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "peanut oil"@en , "arachideolie"@nl .
+
+:ahornsiroop dct:modified "2018-09-13T08:46:28.896Z"^^xsd:dateTime .
+
+:pepper a skos:Concept ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "pepper"@en , "peper"@nl .
+
+:bereiden dct:created "2018-09-13T08:26:58.792Z"^^xsd:dateTime .
+
+:roast a skos:Concept .
+
+:fruiten skos:inScheme :methodesScheme .
+
+:roast skos:prefLabel "roast"@en , "roosteren"@nl .
+
+:vet dct:modified "2018-09-13T08:46:13.023Z"^^xsd:dateTime .
+
+:salt a skos:Concept ;
+	owl:sameAs <http://dbpedia.org/resource/Salt> ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "salt"@en , "zout"@nl .
+
+:sesameSeed <http://schema.org/fiberContent> "12"^^xsd:double .
+
+:bereiden dct:modified "2018-09-18T07:19:18.649Z"^^xsd:dateTime .
+
+:sesameSeed a skos:Concept ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "sesame seed"@en , "sesamzaad"@nl .
+
+:koken skos:prefLabel "koken (bereiden)"@nl .
+
+:skosCollection_23204c7a dct:created "2018-09-13T10:39:38.475Z"^^xsd:dateTime .
+
+:c_ef0afd9d skos:inScheme :methodesScheme .
+
+:skosCollection_23204c7a a skos:Collection .
+
+:whey skos:broader :c_7c29a65f ;
+	a skos:Concept ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "whey"@en , "wei"@nl .
+
+:drop dct:modified "2018-09-13T08:54:39.181Z"^^xsd:dateTime ;
+	skos:broader :beat .
+
+:oliveOil dct:modified "2018-09-13T08:54:07.604Z"^^xsd:dateTime ;
+	skos:broader :oil .
+
+:peanutOil dct:modified "2018-09-13T08:54:13.487Z"^^xsd:dateTime ;
+	skos:broader :oil .
+
+:skosCollection_f4f5ba23 dct:created "2018-09-07T18:44:02.505Z"^^xsd:dateTime ;
+	a skos:Collection ;
+	skos:prefLabel "seasoning"@en ;
+	skos:member :salt , :pepper ;
+	skos:prefLabel "kruiderij"@nl .
+
+:cayennePepper dct:modified "2018-09-13T08:53:53.714Z"^^xsd:dateTime ;
+	skos:broader :pepper .
+
+:sesameSeed skos:hiddenLabel "sezam"@nl ;
+	skos:altLabel "sesam"@nl ;
+	skos:broader :c_7c29a65f .
+
+:c_cae54a82 dct:modified "2018-09-18T09:27:24.905Z"^^xsd:dateTime .
+
+:c_04f7c8f7 dct:created "2018-09-18T09:29:43.063Z"^^xsd:dateTime .
+
+:roerbakken dct:created "2018-09-10T08:07:05.578Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:poffen dct:created "2018-09-10T08:07:24.098Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:garen dct:created "2018-09-10T08:09:40.438Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:stomen dct:created "2018-09-10T08:09:46.173Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:barderen dct:created "2018-09-10T08:10:19.127Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:larderen dct:created "2018-09-10T08:10:53.463Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:pikeren dct:created "2018-09-10T08:11:01.504Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:koken dct:created "2018-09-10T08:11:29.803Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:blancheren dct:created "2018-09-10T08:11:40.875Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:frituren dct:modified "2018-09-13T10:37:22.351Z"^^xsd:dateTime .
+
+:c_04f7c8f7 a skos:Concept .
+
+:drogen dct:created "2018-09-10T08:13:33.908Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:frituren dct:created "2018-09-10T08:13:48.394Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:fruiten dct:created "2018-09-10T08:14:04.136Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:glazeren dct:created "2018-09-10T08:14:47.246Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:gratineren dct:created "2018-09-10T08:14:54.895Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:infuseren dct:created "2018-09-10T08:15:48.476Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:karameliseren dct:created "2018-09-10T08:16:05.561Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:konfijten dct:created "2018-09-10T08:17:27.022Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+<http://flow.recipes/0.1#konfijten_(hartig)> dct:created "2018-09-10T08:18:02.671Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+<http://flow.recipes/0.1#konfijten_(zoet)> dct:created "2018-09-10T08:18:21.806Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:ganzevet dct:created "2018-09-10T08:18:47.040Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:honing dct:created "2018-09-10T08:19:15.235Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:ahornsiroop dct:created "2018-09-10T08:19:36.485Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:ganzevet skos:prefLabel "ganzevet"@nl ;
+	skos:inScheme :ingredientsSchema .
+
+:barderen skos:prefLabel "barderen"@nl .
+
+:ahornsiroop skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "ahornsiroop"@nl ;
+	skos:broader :c_7c29a65f .
+
+:konfijten dct:modified "2018-09-13T10:30:46.721Z"^^xsd:dateTime .
+
+:garen skos:inScheme :methodesScheme .
+
+<http://flow.recipes/0.1#konfijten_(hartig)> skos:broader :konfijten .
+
+:glazeren skos:inScheme :methodesScheme .
+
+:skosCollection_f4f5ba23 dct:modified "2018-09-10T09:01:28.219Z"^^xsd:dateTime .
+
+:gratineren skos:inScheme :methodesScheme .
+
+<http://flow.recipes/0.1#konfijten_(hartig)> dct:modified "2018-09-19T08:31:33.120Z"^^xsd:dateTime .
+
+:konfijten skos:prefLabel "konfijten"@nl .
+
+:ganzevet skos:broadMatch <http://flow.recipes/0.1#konfijten_(hartig)> ;
+	skos:broader :vet .
+
+:larderen skos:prefLabel "larderen"@nl .
+
+:grind skos:inScheme :methodesScheme .
+
+:larderen skos:related :pikeren , :barderen .
+
+:bereiden a skos:Concept .
+
+:pikeren skos:prefLabel "pikeren"@nl .
+
+:bereiden skos:altLabel "maaltijd bereiden"@nl .
+
+:barderen <http://schema.org/video> "https://www.youtube.com/watch?v=CG2YGxEZPQY"@nl .
+
+:vet dct:created "2018-09-10T08:31:26.465Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:ganzevet dct:modified "2018-09-10T08:31:46.269Z"^^xsd:dateTime .
+
+:vet skos:prefLabel "vet"@nl ;
+	skos:inScheme :ingredientsSchema .
+
+:skosCollection_23204c7a skos:member :garen .
+
+:garen skos:prefLabel "garen"@nl .
+
+:blancheren skos:broader :koken .
+
+:fruiten skos:prefLabel "fruiten"@en .
+
+:gratineren skos:prefLabel "gratineren"@nl ;
+	skos:related :glazeren .
+
+:oil skos:broader :c_7c29a65f ;
+	skos:broadMatch :infuseren .
+
+:pekelen dct:created "2018-09-10T08:44:08.457Z"^^xsd:dateTime ;
+	a skos:Concept .
+
+:salt skos:broader :c_7c29a65f ;
+	skos:broadMatch :pekelen .
+
+<http://schema.org/video> dct:created "2018-09-10T08:50:45.763Z"^^xsd:dateTime ;
+	a rdf:Property .
+
+:bereiden skos:inScheme :methodesScheme .
+
+<http://flow.recipes/0.1#konfijten_(zoet)> skos:editorialNote "transitief test"@en ;
+	dct:modified "2018-09-19T08:32:02.027Z"^^xsd:dateTime .
+
+:c_c27250ec skos:definition """
+Fermentatie is de omzetting van stoffen met behulp van bacteriën, celculturen of schimmels."""@nl .
+
+:bereiden skos:prefLabel "koken"@nl .
+
+:c_7c29a65f dct:created "2018-09-11T12:40:03.685Z"^^xsd:dateTime ;
+	a skos:Concept ;
+	skos:inScheme :ingredientsSchema ;
+	skos:prefLabel "ingredient"@nl ;
+	skos:topConceptOf :ingredientsSchema .
+
+:infuseren skos:inScheme :methodesScheme .
+
+:karameliseren skos:inScheme :methodesScheme .
+
+:koken skos:inScheme :methodesScheme .
+
+:konfijten skos:inScheme :methodesScheme .
+
+:honing skos:prefLabel "honing"@nl .
+
+:vet skos:broader :c_7c29a65f .
+
+:blancheren skos:prefLabel "blancheren"@nl .
+
+<http://flow.recipes/0.1#konfijten_(hartig)> skos:inScheme :methodesScheme .
+
+<http://flow.recipes/0.1#konfijten_(zoet)> skos:inScheme :methodesScheme .
+
+:larderen skos:inScheme :methodesScheme .
+
+:bereiden skos:topConceptOf :methodesScheme .
+
+:drogen dct:modified "2018-09-18T09:34:31.495Z"^^xsd:dateTime .
+
+:methodesScheme skos:hasTopConcept :c_cae54a82 ;
+	<http://www.purl.org/dc/terms/title> "Flow methodes schema" ;
+	a skos:ConceptScheme .
+
+:honing skos:inScheme :ingredientsSchema .
+
+:methodesScheme skos:prefLabel "methodes scheme"@nl .
+
+:mix skos:inScheme :methodesScheme .
+
+:pekelen skos:inScheme :methodesScheme .
+
+:pikeren skos:inScheme :methodesScheme .
+
+:frituren skos:broader :bereiden .
+
+:drogen skos:prefLabel "drogen"@nl .
+
+:fruiten skos:broader :bereiden .
+
+:garen skos:broader :bereiden .
+
+:frituren skos:prefLabel "frituren"@nl .
+
+:glazeren skos:broader :bereiden .
+
+:gratineren skos:broader :bereiden .
+
+:glazeren skos:prefLabel "glazeren"@nl .
+
+:grind skos:broader :bereiden .
+
+:infuseren skos:broader :bereiden .
+
+:karameliseren skos:broader :bereiden .
+
+:poffen skos:inScheme :methodesScheme .
+
+:koken skos:broader :bereiden .
+
+:konfijten skos:broader :bereiden .
+
+:infuseren skos:prefLabel "infuseren"@nl .
+
+:larderen skos:broader :bereiden .
+
+:mix skos:broader :bereiden .
+
+:pekelen skos:prefLabel "pekelen"@nl .
+
+:blancheren skos:definition "Blancheren is een kooktechniek waarbij voedsel, meestal groente of fruit, een korte tijd wordt gekookt waarna het in koud water wordt gelegd of door koud water wordt afgespoeld zodat het kookproces wordt onderbroken. Blancheren gebeurt altijd zonder deksel."@nl .
+
+:roast skos:inScheme :methodesScheme .
+
+:roerbakken skos:inScheme :methodesScheme .
+
+:pekelen dct:modified "2018-09-18T09:38:15.439Z"^^xsd:dateTime .
+
+:poffen skos:prefLabel "poffen"@nl .
+
+:pikeren skos:broader :bereiden .
+
+:poffen skos:broader :bereiden .
+
+:roerbakken skos:prefLabel "roerbakken"@nl .
+
+:roast skos:broader :bereiden .
+
+:koken dct:modified "2018-09-19T08:18:07.786Z"^^xsd:dateTime .
+
+<http://flow.recipes/0.1#konfijten_(zoet)> skos:broader :konfijten .
+
+<http://flow.recipes/0.1#konfijten_(hartig)> skos:prefLabel "konfijten_(hartig)"@nl .
+
+:ingredientsSchema skos:hasTopConcept :c_7c29a65f ;
+	skos:prefLabel "ingredienten scheme"@nl .
+
+:sesameSeed dct:modified "2018-09-13T08:54:30.946Z"^^xsd:dateTime .
+
+:stomen skos:prefLabel "stomen"@nl .
+
+:roerbakken skos:broader :bereiden .
+
+:karameliseren skos:prefLabel "karameliseren"@nl .
+
+:infuseren dct:modified "2018-09-13T08:35:43.131Z"^^xsd:dateTime .
+
+:honing skos:broader :c_7c29a65f .
+
+:koken skos:definition "In kokend water bij 100°C laten liggen."@nl .
+
+:c_cae54a82 skos:prefLabel "bakken"@nl .
+
+:c_04f7c8f7 skos:inScheme :methodesScheme .
+
+:grind dct:modified "2018-09-13T08:39:00.511Z"^^xsd:dateTime .
+
+:drogen skos:broader :c_04f7c8f7 .
+
+:barderen skos:definition "techniek waarbij vlees wordt ingepakt met spek alvorens het snel en door middel van droge hitte wordt gebraden"@nl .
+
+:fruiten skos:prefLabel "fruiten"@nl .
+
+:garen dct:modified "2018-09-13T10:37:29.676Z"^^xsd:dateTime .
+
+:glazeren dct:modified "2018-09-13T08:40:13.454Z"^^xsd:dateTime .
+
+:gratineren dct:modified "2018-09-13T08:40:23.004Z"^^xsd:dateTime .
+
+:honing dct:modified "2018-09-13T08:40:49.944Z"^^xsd:dateTime .
+
+:egg dct:modified "2018-09-13T08:41:13.591Z"^^xsd:dateTime .
+
+:chickPea dct:modified "2018-09-13T08:42:26.859Z"^^xsd:dateTime .
+
+:beat skos:broader :c_cae54a82 .
+
+:larderen dct:modified "2018-09-13T08:43:25.767Z"^^xsd:dateTime .
+
+:mix skos:broader :c_cae54a82 .
+
+:mustard dct:modified "2018-09-13T08:53:58.256Z"^^xsd:dateTime ;
+	skos:broader :c_7c29a65f .
+
+:pekelen skos:definition "Pekelen is het conserveren van etenswaren door het in te leggen in zout of pekel"@nl .
+
+:pepper dct:modified "2018-09-13T08:54:21.137Z"^^xsd:dateTime ;
+	skos:broader :c_7c29a65f .
+
+:pikeren dct:modified "2018-09-13T08:44:38.354Z"^^xsd:dateTime .
+
+:poffen dct:modified "2018-09-13T08:44:46.085Z"^^xsd:dateTime .
+
+:roerbakken dct:modified "2018-09-13T08:44:55.362Z"^^xsd:dateTime .
+
+:stomen skos:inScheme :methodesScheme ;
+	skos:broader :bereiden .
+
+:blancheren dct:modified "2018-09-13T10:23:03.796Z"^^xsd:dateTime .
+
+:c_04f7c8f7 skos:prefLabel "conserveren"@nl .
+
+:koken skos:editorialNote "Niet te verwarren met koken algemeen (het verhitten van voedsel)"@nl .
