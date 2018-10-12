@@ -78,5 +78,22 @@
 
 :Instruction rdf:type owl:Class .
 
-:Method rdf:type owl:Class;
-        rdfs:label "Methode"@nl .
+:Ingredient owl:equivalentClass [ 
+        owl:intersectionOf ( skos:Concept
+            [ rdf:type owl:Restriction ;
+                owl:onProperty skos:inScheme ;
+                owl:hasValue :ingredientsScheme
+            ]
+        ) ; rdf:type owl:Class 
+    ] , rdfs:subClassOf :Component ;
+    owl:disjointWith :Method .
+
+
+:Method owl:equivalentClass [ 
+        owl:intersectionOf ( skos:Concept
+            [ rdf:type owl:Restriction ;
+              owl:onProperty skos:inScheme ;
+              owl:hasValue :methodsScheme
+            ]
+        ) ; rdf:type owl:Class
+    ] .
