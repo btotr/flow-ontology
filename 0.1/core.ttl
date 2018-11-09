@@ -1,0 +1,147 @@
+# baseURI: http://flow.recipes/0.1
+# imports: http://datashapes.org/dash
+# prefix: flow
+
+@prefix metadata: <http://topbraid.org/metadata#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix flow: <http://flow.recipes/ns/core#> .
+@prefix fs: <http://flow.recipes/ns/scheme#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+flow:Ingredient
+        a                    owl:Class ;
+        rdfs:comment         "an ingredient used for a particular instruction." ;
+        rdfs:label           "Ingredient"@en ;
+        rdfs:subClassOf      flow:Component ;
+        owl:disjointWith     flow:Method ;
+        owl:equivalentClass  [ a                    owl:Class ;
+                               owl:equivalentClass  flow:Ingredient ;
+                               owl:intersectionOf   ( skos:Concept
+                                                      [ a               owl:Restriction ;
+                                                        owl:hasValue    fs:ingredientsScheme ;
+                                                        owl:onProperty  skos:inScheme
+                                                      ]
+                                                    )
+                             ] .
+
+flow:Case  a    owl:Class ;
+        rdfs:label       "Case" ;
+        rdfs:subClassOf  owl:Thing .
+
+flow:Component
+        a                owl:Class ;
+        rdfs:label       "Component" ;
+        rdfs:subClassOf  owl:Thing .
+
+flow:Method  a      owl:Class ;
+        rdfs:label           "Method" ;
+        rdfs:subClassOf      owl:Thing ;
+        owl:disjointWith     flow:Ingredient ;
+        owl:equivalentClass  [ a                    owl:Class ;
+                               owl:equivalentClass  flow:Method ;
+                               owl:intersectionOf   ( skos:Concept
+                                                      [ a               owl:Restriction ;
+                                                        owl:hasValue    fs:methodsScheme ;
+                                                        owl:onProperty  skos:inScheme
+                                                      ]
+                                                    )
+                             ] .
+
+flow:Instruction
+        a                owl:Class , sh:NodeShape ;
+        rdfs:label       "Instruction" ;
+        rdfs:subClassOf  owl:Thing ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  1 ;
+                           owl:onProperty      flow:hasMethod
+                         ] ;
+        sh:property      flow:Instruction-hasMethod ;
+        sh:property      flow:Instruction-hasCase .
+
+flow:weight  a  owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:domain  flow:ComponentUnit ;
+        rdfs:label   "weight" ;
+        rdfs:range   xsd:integer .
+
+flow:ComponentUnit
+        a                owl:Class ;
+        rdfs:subClassOf  owl:Thing .
+
+flow:Recipe  a      owl:Class ;
+        rdfs:comment         "A recipe could stand on his own or act as an ingredient for another recipe." ;
+        rdfs:label           "Recipe" ;
+        rdfs:subClassOf      flow:Component .
+
+flow:componentAddition
+        a            owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:domain  flow:ComponentUnit ;
+        rdfs:label   "component addition" ;
+        rdfs:range   xsd:string .
+
+flow:hasComponentUnit
+        a            owl:ObjectProperty ;
+        rdfs:domain  flow:Instruction ;
+        rdfs:label   "has component unit" ;
+        rdfs:range   flow:ComponentUnit .
+
+flow:hasComponent
+        a            owl:ObjectProperty ;
+        rdfs:domain  flow:ComponentUnit ;
+        rdfs:label   "has component" ;
+        rdfs:range   flow:Component .
+
+flow:hasInstruction
+        a            owl:ObjectProperty ;
+        rdfs:domain  [ a            owl:Class ;
+                       owl:unionOf  ( flow:Case flow:Instruction )
+                     ] ;
+        rdfs:range   flow:Instruction .
+
+flow:directions
+        a            owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:domain  flow:Instruction ;
+        rdfs:label   "directions" ;
+        rdfs:range   xsd:string .
+
+flow:hasCase
+        a            owl:ObjectProperty ;
+        rdfs:domain  [ a            owl:Class ;
+                       owl:unionOf  ( flow:Case flow:Instruction )
+                     ] ;
+        rdfs:label   "hasCase"@en ;
+        rdfs:range   flow:Case .
+
+flow:hasMethod
+        a            owl:FunctionalProperty , owl:ObjectProperty ;
+        rdfs:domain  flow:Instruction ;
+        rdfs:label   "hasMethod"@en ;
+        rdfs:range   flow:Method .
+
+flow:Instruction-hasMethod
+        a            sh:PropertyShape ;
+        rdfs:comment "An Instruction must have a method" ;
+        sh:maxCount  1 ;
+        sh:minCount  1 ;
+        sh:path      flow:hasMethod.
+
+flow:Instruction-hasCase
+        a            sh:PropertyShape ;
+        rdfs:comment "either a Case could be used or an Instruction" ;
+        sh:path      flow:hasCase;
+        sh:not [
+		      a sh:PropertyShape ;
+		      sh:path flow:hasInstruction ;
+		      sh:minCount 1 ;
+	      ] .
+
+<http://flow.recipes/ns/core>
+        a                owl:Ontology ;
+        rdfs:label       "Flow recipes core ontology" ;
+        metadata:status  metadata:UnderDevelopmentStatus ;
+        <http://topbraid.org/swa#defaultNamespace>
+                "http://flow.recipes/0.1#" ;
+        owl:imports      <http://datashapes.org/dash> .
