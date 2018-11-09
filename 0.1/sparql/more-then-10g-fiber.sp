@@ -7,25 +7,6 @@ prefix recipe: <http://schema.org/Recipe#>
 prefix dbo: <http://dbpedia.org/ontology/>
 prefix skos: <http://www.w3.org/2004/02/skos/core#> 
 
-# all recipes
-
-SELECT ?name
-WHERE {
-  ?recipe a recipe:Recipe .
-  ?recipe rdfs:label ?name .
-}
-LIMIT 25
-
-#### all recipes which has roasting as methode
-
-SELECT  ?name
-WHERE {
-  ?recipe a recipe:Recipe .
-  ?recipe rdfs:label ?name .
-  ?recipe recipe:recipeInstructions ?instruction .
-  ?instruction flow:hasInstruction*/flow:hasMethode/skos:prefLabel "roosteren"@nl .
-}
-
 # recipes which provide more than 10g fibers
 
 SELECT  ?name (SUM(?normalisedFiber) AS ?totalFiber) 
@@ -45,18 +26,3 @@ WHERE {
 GROUP BY ?name ?totalFiber
 # only show recipes which provide more than 10g fibers 
 HAVING (?totalFiber > 10)
-
-# get all recipes from dpedia with mayonaise as ingredient
-
-SELECT  ?recipes
-WHERE {
-
-  ?recipe a recipe:Recipe .
-  ?recipe rdfs:label "Mayonnaise"@nl .
-  ?recipe owl:sameAs ?ingredient .
-  
-  SERVICE <http://dbpedia.org/sparql> {    
-	?ingredient rdfs:label "Mayonnaise"@en .
-	?recipes dbo:ingredient ?ingredient .
-  }
-}
