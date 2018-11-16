@@ -20,8 +20,8 @@
 recipe:hummus
   rdf:type flow:Recipe ;
   rdf:type owl:NamedIndividual ;
-  recipe:prepTime "PT10M" ;
-  recipe:recipeInstructions recipe:hummusRoastInstruction ;
+  <http://schema.org/prepTime> "PT10M" ;
+  flow:hasInstructions recipe:hummusRoastInstruction ;
   rdfs:label "Hummus" ;
 .
 recipe:hummusGrindInstruction
