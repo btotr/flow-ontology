@@ -39,7 +39,7 @@
 
 :response
   rdf:type sml:ReturnText ;
-  sml:mimeType "text"^^xsd:string ;
+  sml:mimeType "plain/text"^^xsd:string ;
   sml:text "{?recipe}, lekker he!"^^xsd:string ;
   rdfs:label "response"^^xsd:string ;
 .
