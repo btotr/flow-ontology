@@ -1,52 +1,68 @@
-@prefix recipe: <http://flow.recipes/ns/recipe#> .
+# baseURI: http://flow.recipes/ns/recipe
+# imports: http://flow.recipes/ns/core
+# imports: http://www.w3.org/2002/07/owl#
+# prefix: recipe
+
+@prefix : <http://flow.recipes/ns/recipe#> .
 @prefix flow: <http://flow.recipes/ns/core#> .
 @prefix fs: <http://flow.recipes/ns/scheme#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix recipe: <http://flow.recipes/ns/recipe#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@base <http://flow.recipes/ns/recipe> .
 
-recipe:hummus rdf:type owl:NamedIndividual , flow:Recipe ;
-    rdfs:label "Hummus" ;
-    recipe:recipeInstructions  recipe:hummusRoastInstruction ;
-    recipe:prepTime "PT10M" .
-
-### INSTRUCTIONS
-
-recipe:hummusRoastInstruction rdf:type owl:NamedIndividual ,  flow:Instruction ;
-     flow:hasInstruction  recipe:hummusGrindInstruction ;
-     flow:hasMethod  fs:roast;
-     flow:hasComponentUnit [
-         flow:hasComponent  fs:sesameSeed ;
-         flow:weight 40
-	] ;
-	flow:directions "regelmatig schudden"@nl .
-
-recipe:hummusGrindInstruction rdf:type owl:NamedIndividual ,  flow:Instruction ;
-     flow:hasInstruction  recipe:hummusMixInstruction ;
-     flow:hasMethod  fs:grind ;
-     flow:hasComponentUnit [
-	     flow:hasComponent  fs:lemonJuice ;
-	     flow:componentAddition "½"^^xsd:string ;
-         flow:weight 20
+<http://flow.recipes/ns/recipe>
+  rdf:type owl:Ontology ;
+  owl:imports <http://flow.recipes/ns/core> ;
+  owl:imports owl: ;
+.
+recipe:hummus
+  rdf:type flow:Recipe ;
+  rdf:type owl:NamedIndividual ;
+  recipe:prepTime "PT10M" ;
+  recipe:recipeInstructions recipe:hummusRoastInstruction ;
+  rdfs:label "Hummus" ;
+.
+recipe:hummusGrindInstruction
+  rdf:type flow:Instruction ;
+  rdf:type owl:NamedIndividual ;
+  flow:hasComponentUnit [
+      flow:componentAddition "½" ;
+      flow:hasComponent fs:lemonJuice ;
+      flow:weight 20 ;
     ] ;
-     flow:hasComponentUnit [
-	     flow:hasComponent  fs:chickPea ;
-         flow:weight 250
+  flow:hasComponentUnit [
+      flow:hasComponent fs:cayennePepper ;
     ] ;
-     flow:hasComponentUnit [
-	     flow:hasComponent  fs:cayennePepper ;
+  flow:hasComponentUnit [
+      flow:hasComponent fs:chickPea ;
+      flow:weight 250 ;
     ] ;
-     flow:hasComponentUnit [
-	     flow:hasComponent  fs:salt ;
-    ] .
-
-
-recipe:hummusMixInstruction rdf:type owl:NamedIndividual ,  flow:Instruction ;
-     flow:hasMethod  fs:mix ;
-     flow:hasComponentUnit [
-	     flow:hasComponent  fs:oliveOil ;
-	     flow:componentAddition "x-vierge"^^xsd:string ;
-         flow:weight 20
-    ].
+  flow:hasComponentUnit [
+      flow:hasComponent fs:salt ;
+    ] ;
+  flow:hasInstruction recipe:hummusMixInstruction ;
+  flow:hasMethod fs:grind ;
+.
+recipe:hummusMixInstruction
+  rdf:type flow:Instruction ;
+  rdf:type owl:NamedIndividual ;
+  flow:hasComponentUnit [
+      flow:componentAddition "x-vierge" ;
+      flow:hasComponent fs:oliveOil ;
+      flow:weight 20 ;
+    ] ;
+  flow:hasMethod fs:mix ;
+.
+recipe:hummusRoastInstruction
+  rdf:type flow:Instruction ;
+  rdf:type owl:NamedIndividual ;
+  flow:directions "regelmatig schudden"@nl ;
+  flow:hasComponentUnit [
+      flow:hasComponent fs:sesameSeed ;
+      flow:weight 40 ;
+    ] ;
+  flow:hasInstruction recipe:hummusGrindInstruction ;
+  flow:hasMethod fs:roast ;
+.
