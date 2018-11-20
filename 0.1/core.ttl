@@ -1,23 +1,19 @@
 # baseURI: http://flow.recipes/ns/core
-# imports: http://www.w3.org/2002/07/owl#
 # prefix: flow
 
 @prefix : <http://flow.recipes/ns/core#> .
 @prefix flow: <http://flow.recipes/ns/core#> .
 @prefix fs: <http://flow.recipes/ns/scheme#> .
-@prefix metadata: <http://topbraid.org/metadata#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://flow.recipes/ns/core>
   rdf:type owl:Ontology ;
-  metadata:status metadata:UnderDevelopmentStatus ;
   rdfs:label "Flow recipes core ontology" ;
-  owl:imports owl: ;
+  owl:imports <http://flow.recipes/ns/scheme> ;
 .
 flow:Case
   rdf:type owl:Class ;
@@ -54,7 +50,6 @@ flow:Ingredient
 .
 flow:Instruction
   rdf:type owl:Class ;
-  rdf:type sh:NodeShape ;
   rdfs:label "Instruction" ;
   rdfs:subClassOf owl:Thing ;
   rdfs:subClassOf [
@@ -62,25 +57,6 @@ flow:Instruction
       owl:minCardinality 1 ;
       owl:onProperty flow:hasMethod ;
     ] ;
-  sh:property flow:Instruction-hasCase ;
-  sh:property flow:Instruction-hasMethod ;
-.
-flow:Instruction-hasCase
-  rdf:type sh:PropertyShape ;
-  sh:path flow:hasCase ;
-  rdfs:comment "either a Case could be used or an Instruction" ;
-  sh:not [
-      rdf:type sh:PropertyShape ;
-      sh:path flow:hasInstruction ;
-      sh:minCount 1 ;
-    ] ;
-.
-flow:Instruction-hasMethod
-  rdf:type sh:PropertyShape ;
-  sh:path flow:hasMethod ;
-  rdfs:comment "An Instruction must have a method" ;
-  sh:maxCount 1 ;
-  sh:minCount 1 ;
 .
 flow:Method
   rdf:type owl:Class ;

@@ -490,7 +490,7 @@ fs:whey
   skos:prefLabel "wei"@nl ;
   skos:prefLabel "whey"@en ;
 .
-owl:
+<http://flow.recipes/ns/scheme>
   rdf:type owl:Ontology ;
   owl:imports <https://www.w3.org/2009/08/skos-reference/skos.rdf> ;
 .
