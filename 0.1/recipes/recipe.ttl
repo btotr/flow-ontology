@@ -1,13 +1,13 @@
 # baseURI: http://flow.recipes/ns/recipe
 # imports: http://flow.recipes/ns/recipe/generated
 # imports: http://flow.recipes/ns/recipe/premium
+# prefix: recipe
 
 @prefix : <http://flow.recipes/ns/recipe#> .
-@prefix recipe: <http://flow.recipes/ns/recipe#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix recipe: <http://flow.recipes/ns/recipe#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix recipe: <http://flow.recipes/ns/recipe#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://flow.recipes/ns/recipe>

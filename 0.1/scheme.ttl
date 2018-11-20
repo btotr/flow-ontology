@@ -1,6 +1,6 @@
-# baseURI: http://www.w3.org/2002/07/owl#
+# baseURI: http://flow.recipes/ns/scheme#
 # imports: https://www.w3.org/2009/08/skos-reference/skos.rdf
-# prefix: owl
+
 
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .

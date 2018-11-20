@@ -1,29 +1,23 @@
 # baseURI: http://flow.recipes/ns/recipe/generated
 # imports: http://flow.recipes/ns/core
-# imports: http://www.w3.org/2002/07/owl#
+# imports: http://flow.recipes/ns/scheme#
 
-@prefix : <http://flow.recipes/ns/recipe/generated#> .
 @prefix flow: <http://flow.recipes/ns/core#> .
 @prefix fs: <http://flow.recipes/ns/scheme#> .
+@prefix gen: <http://flow.recipes/ns/generated#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix recipe: <http://flow.recipes/ns/generated#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://flow.recipes/ns/recipe/generated>
-  rdf:type owl:Ontology ;
-  owl:imports <http://flow.recipes/ns/core> ;
-  owl:imports owl: ;
-.
-:hummus
+gen:hummus
   rdf:type flow:Recipe ;
   rdf:type owl:NamedIndividual ;
-  flow:hasInstruction :hummusRoastInstruction ;
+  flow:hasInstruction gen:hummusRoastInstruction ;
   <http://schema.org/prepTime> "PT10M" ;
   rdfs:label "Hummus" ;
 .
-:hummusGrindInstruction
+gen:hummusGrindInstruction
   rdf:type flow:Instruction ;
   rdf:type owl:NamedIndividual ;
   flow:hasComponentUnit [
@@ -41,10 +35,10 @@
   flow:hasComponentUnit [
       flow:hasComponent fs:salt ;
     ] ;
-  flow:hasInstruction :hummusMixInstruction ;
+  flow:hasInstruction gen:hummusMixInstruction ;
   flow:hasMethod fs:grind ;
 .
-:hummusMixInstruction
+gen:hummusMixInstruction
   rdf:type flow:Instruction ;
   rdf:type owl:NamedIndividual ;
   flow:hasComponentUnit [
@@ -54,7 +48,7 @@
     ] ;
   flow:hasMethod fs:mix ;
 .
-:hummusRoastInstruction
+gen:hummusRoastInstruction
   rdf:type flow:Instruction ;
   rdf:type owl:NamedIndividual ;
   flow:directions "regelmatig schudden"@nl ;
@@ -62,6 +56,11 @@
       flow:hasComponent fs:sesameSeed ;
       flow:weight 40 ;
     ] ;
-  flow:hasInstruction :hummusGrindInstruction ;
+  flow:hasInstruction gen:hummusGrindInstruction ;
   flow:hasMethod fs:roast ;
+.
+<http://flow.recipes/ns/recipe/generated>
+  rdf:type owl:Ontology ;
+  owl:imports <http://flow.recipes/ns/core> ;
+  owl:imports fs: ;
 .

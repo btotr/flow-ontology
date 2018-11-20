@@ -13,7 +13,7 @@
 <http://flow.recipes/ns/core>
   rdf:type owl:Ontology ;
   rdfs:label "Flow recipes core ontology" ;
-  owl:imports <http://flow.recipes/ns/scheme> ;
+  owl:imports fs: ;
 .
 flow:Case
   rdf:type owl:Class ;
