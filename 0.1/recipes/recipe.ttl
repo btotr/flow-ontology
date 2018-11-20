@@ -1,0 +1,17 @@
+# baseURI: http://flow.recipes/ns/recipe
+# imports: http://flow.recipes/ns/recipe/generated
+# imports: http://flow.recipes/ns/recipe/premium
+
+@prefix : <http://flow.recipes/ns/recipe#> .
+@prefix recipe: <http://flow.recipes/ns/recipe#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix premium: <http://flow.recipes/ns/recipe/premium#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://flow.recipes/ns/recipe>
+  rdf:type owl:Ontology ;
+  owl:imports <http://flow.recipes/ns/recipe/generated> ;
+  owl:imports <http://flow.recipes/ns/recipe/premium> ;
+.

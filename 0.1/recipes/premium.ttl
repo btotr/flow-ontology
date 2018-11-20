@@ -1,30 +1,30 @@
-# baseURI: http://flow.recipes/ns/recipe
+# baseURI: http://flow.recipes/ns/recipe/premium
 # imports: http://flow.recipes/ns/core
 # imports: http://www.w3.org/2002/07/owl#
-# prefix: recipe
+# prefix: premium
 
-@prefix : <http://flow.recipes/ns/recipe#> .
+@prefix premium: <http://flow.recipes/ns/recipe/premium#> .
 @prefix flow: <http://flow.recipes/ns/core#> .
 @prefix fs: <http://flow.recipes/ns/scheme#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix recipe: <http://flow.recipes/ns/recipe#> .
+@prefix recipe: <http://flow.recipes/ns/recipe/premium#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://flow.recipes/ns/recipe>
+<http://flow.recipes/ns/recipepremium>
   rdf:type owl:Ontology ;
   owl:imports <http://flow.recipes/ns/core> ;
   owl:imports owl: ;
 .
-recipe:hummus
+premium:hummus
   rdf:type flow:Recipe ;
   rdf:type owl:NamedIndividual ;
   <http://schema.org/prepTime> "PT10M" ;
   flow:hasInstructions recipe:hummusRoastInstruction ;
   rdfs:label "Hummus" ;
 .
-recipe:hummusGrindInstruction
+premium:hummusGrindInstruction
   rdf:type flow:Instruction ;
   rdf:type owl:NamedIndividual ;
   flow:hasComponentUnit [
@@ -45,7 +45,7 @@ recipe:hummusGrindInstruction
   flow:hasInstruction recipe:hummusMixInstruction ;
   flow:hasMethod fs:grind ;
 .
-recipe:hummusMixInstruction
+premium:hummusMixInstruction
   rdf:type flow:Instruction ;
   rdf:type owl:NamedIndividual ;
   flow:hasComponentUnit [
@@ -55,7 +55,7 @@ recipe:hummusMixInstruction
     ] ;
   flow:hasMethod fs:mix ;
 .
-recipe:hummusRoastInstruction
+premium:hummusRoastInstruction
   rdf:type flow:Instruction ;
   rdf:type owl:NamedIndividual ;
   flow:directions "regelmatig schudden"@nl ;
