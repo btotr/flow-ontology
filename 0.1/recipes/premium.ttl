@@ -3,7 +3,7 @@
 # imports: http://www.w3.org/2002/07/owl#
 # prefix: premium
 
-@prefix premium: <http://flow.recipes/ns/recipe/premium#> .
+@prefix : <http://flow.recipes/ns/recipe/premium#> .
 @prefix flow: <http://flow.recipes/ns/core#> .
 @prefix fs: <http://flow.recipes/ns/scheme#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
