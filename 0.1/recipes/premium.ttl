@@ -12,7 +12,7 @@
 @prefix recipe: <http://flow.recipes/ns/recipe/premium#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://flow.recipes/ns/recipepremium>
+<http://flow.recipes/ns/recipe/premium>
   rdf:type owl:Ontology ;
   owl:imports <http://flow.recipes/ns/core> ;
   owl:imports owl: ;
