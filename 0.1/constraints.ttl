@@ -1,4 +1,7 @@
-@prefix : <http://flow.recipes/ns/core#> .
+# baseURI: http://flow.recipes/ns/constraints
+# imports: http://flow.recipes/ns/core
+
+@prefix : <http://flow.recipes/ns/constraints#> .
 @prefix flow: <http://flow.recipes/ns/core#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -7,12 +10,15 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://flow.recipes/ns/constraints>
+  rdf:type owl:Ontology ;
+  owl:imports <http://flow.recipes/ns/core> ;
+.
 flow:Instruction
   rdf:type sh:NodeShape ;
   sh:property flow:Instruction-hasCase ;
   sh:property flow:Instruction-hasMethod ;
 .
-
 flow:Instruction-hasCase
   rdf:type sh:PropertyShape ;
   sh:path flow:hasCase ;

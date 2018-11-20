@@ -1,4 +1,5 @@
 # baseURI: http://flow.recipes/ns/core
+# imports: http://flow.recipes/ns/scheme#
 # prefix: flow
 
 @prefix : <http://flow.recipes/ns/core#> .
