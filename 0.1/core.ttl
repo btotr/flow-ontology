@@ -17,6 +17,7 @@
   rdfs:label "Flow recipes core ontology" ;
   owl:imports fs: ;
   owl:imports <https://www.w3.org/2009/08/skos-reference/skos.rdf> ;
+  owl:versionInfo "0.0.1" ;
 .
 flow:Case
   a owl:Class ;
