@@ -182,7 +182,6 @@ fs:ganzevet
   rdf:type skos:Concept ;
   dct:created "2018-09-10T08:18:47.040Z"^^xsd:dateTime ;
   dct:modified "2018-09-10T08:31:46.269Z"^^xsd:dateTime ;
-  skos:broadMatch fs: ;
   skos:broader fs:vet ;
   skos:inScheme fs:ingredientsScheme ;
   skos:prefLabel "ganzevet"@nl ;
