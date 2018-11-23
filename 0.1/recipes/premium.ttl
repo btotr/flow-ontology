@@ -22,7 +22,7 @@
 premium:hummus
   a flow:Recipe ;
   a owl:NamedIndividual ;
-  flow:hasInstructions premium:hummusRoastInstruction ;
+  flow:instructions (premium:hummusRoastInstruction premium:hummusGrindInstruction premium:hummusMixInstruction);
   <http://schema.org/prepTime> "PT10M" ;
   rdfs:label "Hummus" ;
 .

@@ -134,6 +134,10 @@ flow:hasMethod
   rdfs:label "hasMethod"@en ;
   rdfs:range flow:Method ;
 .
+flow:instructions
+  a rdf:Property ;
+  rdfs:domain flow:Recipe ;
+.
 flow:weight
   a owl:DatatypeProperty ;
   a owl:FunctionalProperty ;
