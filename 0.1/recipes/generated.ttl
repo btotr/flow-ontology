@@ -15,3 +15,24 @@
   owl:imports <http://flow.recipes/ns/core> ;
   owl:imports fs: ;
 .
+
+gen:a
+  a flow:Recipe ;
+  a owl:NamedIndividual ;
+  flow:instructions (
+      gen:a1
+      gen:a2
+    ) ;
+  rdfs:label "A" ;
+.
+gen:a1
+  a flow:Instruction ;
+  a owl:NamedIndividual ;
+  flow:hasMethod fs:grind ;
+.
+gen:a2
+  a flow:Instruction ;
+  a owl:NamedIndividual ;
+  flow:depVariationInstruction gen:a1 ;
+  flow:hasMethod fs:grind ;
+.
