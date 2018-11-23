@@ -14,12 +14,6 @@
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-flow:Ingredient
-  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
-.
-flow:Method
-  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
-.
 <http://flow.recipes/ns/recipe/premium>
   a owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;

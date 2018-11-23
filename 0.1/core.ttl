@@ -40,6 +40,7 @@ flow:Ingredient
   rdfs:comment "an ingredient used for a particular instruction." ;
   rdfs:label "Ingredient"@en ;
   rdfs:subClassOf flow:Component ;
+  rdfs:subClassOf skos:Concept ;
   owl:disjointWith flow:Method ;
   owl:equivalentClass [
       a owl:Class ;
@@ -69,6 +70,7 @@ flow:Method
   rdfs:comment "some method or preperation which definies the instruction." ;
   rdfs:label "Method" ;
   rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf skos:Concept ;
   owl:disjointWith flow:Ingredient ;
   owl:equivalentClass [
       a owl:Class ;
