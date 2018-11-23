@@ -11,26 +11,16 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://flow.recipes/ns/constraints>
-  rdf:type owl:Ontology ;
+  a owl:Ontology ;
   owl:imports <http://flow.recipes/ns/core> ;
 .
 flow:Instruction
-  rdf:type sh:NodeShape ;
-  sh:property flow:Instruction-hasCase ;
-  sh:property flow:Instruction-hasMethod ;
+  a sh:NodeShape ;
+  sh:property flow:MustHaveOneMethode ;
 .
-flow:Instruction-hasCase
-  rdf:type sh:PropertyShape ;
-  sh:path flow:hasCase ;
-  rdfs:comment "either a Case could be used or an Instruction" ;
-  sh:not [
-      rdf:type sh:PropertyShape ;
-      sh:path flow:hasInstruction ;
-      sh:minCount 1 ;
-    ] ;
-.
-flow:Instruction-hasMethod
-  rdf:type sh:PropertyShape ;
+
+flow:MustHaveOneMethode
+  a sh:PropertyShape ;
   sh:path flow:hasMethod ;
   rdfs:comment "An Instruction must have a method" ;
   sh:maxCount 1 ;

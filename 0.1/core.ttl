@@ -12,37 +12,37 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://flow.recipes/ns/core>
-  rdf:type owl:Ontology ;
+  a owl:Ontology ;
   rdfs:label "Flow recipes core ontology" ;
   owl:imports fs: ;
 .
 flow:Case
-  rdf:type owl:Class ;
+  a owl:Class ;
   rdfs:label "Case" ;
   rdfs:subClassOf owl:Thing ;
 .
 flow:Component
-  rdf:type owl:Class ;
+  a owl:Class ;
   rdfs:label "Component" ;
   rdfs:subClassOf owl:Thing ;
 .
 flow:ComponentUnit
-  rdf:type owl:Class ;
+  a owl:Class ;
   rdfs:subClassOf owl:Thing ;
 .
 flow:Ingredient
-  rdf:type owl:Class ;
+  a owl:Class ;
   rdfs:comment "an ingredient used for a particular instruction." ;
   rdfs:label "Ingredient"@en ;
   rdfs:subClassOf flow:Component ;
   owl:disjointWith flow:Method ;
   owl:equivalentClass [
-      rdf:type owl:Class ;
+      a owl:Class ;
       owl:equivalentClass flow:Ingredient ;
       owl:intersectionOf (
           skos:Concept
           [
-            rdf:type owl:Restriction ;
+            a owl:Restriction ;
             owl:hasValue fs:ingredientsScheme ;
             owl:onProperty skos:inScheme ;
           ]
@@ -50,27 +50,27 @@ flow:Ingredient
     ] ;
 .
 flow:Instruction
-  rdf:type owl:Class ;
+  a owl:Class ;
   rdfs:label "Instruction" ;
   rdfs:subClassOf owl:Thing ;
   rdfs:subClassOf [
-      rdf:type owl:Restriction ;
+      a owl:Restriction ;
       owl:minCardinality 1 ;
       owl:onProperty flow:hasMethod ;
     ] ;
 .
 flow:Method
-  rdf:type owl:Class ;
+  a owl:Class ;
   rdfs:label "Method" ;
   rdfs:subClassOf owl:Thing ;
   owl:disjointWith flow:Ingredient ;
   owl:equivalentClass [
-      rdf:type owl:Class ;
+      a owl:Class ;
       owl:equivalentClass flow:Method ;
       owl:intersectionOf (
           skos:Concept
           [
-            rdf:type owl:Restriction ;
+            a owl:Restriction ;
             owl:hasValue fs:methodsScheme ;
             owl:onProperty skos:inScheme ;
           ]
@@ -78,29 +78,35 @@ flow:Method
     ] ;
 .
 flow:Recipe
-  rdf:type owl:Class ;
+  a owl:Class ;
   rdfs:comment "A recipe could stand on his own or act as an ingredient for another recipe." ;
   rdfs:label "Recipe" ;
   rdfs:subClassOf flow:Component ;
 .
 flow:componentAddition
-  rdf:type owl:DatatypeProperty ;
-  rdf:type owl:FunctionalProperty ;
+  a owl:DatatypeProperty ;
+  a owl:FunctionalProperty ;
   rdfs:domain flow:ComponentUnit ;
   rdfs:label "component addition" ;
   rdfs:range xsd:string ;
 .
+flow:depVariationInstruction
+  a owl:ObjectProperty ;
+  rdfs:comment "instruction depends on some variation of another instruction" ;
+  rdfs:domain flow:Instruction ;
+  rdfs:range flow:Instruction ;
+.
 flow:directions
-  rdf:type owl:DatatypeProperty ;
-  rdf:type owl:FunctionalProperty ;
+  a owl:DatatypeProperty ;
+  a owl:FunctionalProperty ;
   rdfs:domain flow:Instruction ;
   rdfs:label "directions" ;
   rdfs:range xsd:string ;
 .
 flow:hasCase
-  rdf:type owl:ObjectProperty ;
+  a owl:ObjectProperty ;
   rdfs:domain [
-      rdf:type owl:Class ;
+      a owl:Class ;
       owl:unionOf (
           flow:Case
           flow:Instruction
@@ -110,40 +116,35 @@ flow:hasCase
   rdfs:range flow:Case ;
 .
 flow:hasComponent
-  rdf:type owl:ObjectProperty ;
+  a owl:ObjectProperty ;
   rdfs:domain flow:ComponentUnit ;
   rdfs:label "has component" ;
   rdfs:range flow:Component ;
 .
 flow:hasComponentUnit
-  rdf:type owl:ObjectProperty ;
+  a owl:ObjectProperty ;
   rdfs:domain flow:Instruction ;
   rdfs:label "has component unit" ;
   rdfs:range flow:ComponentUnit ;
 .
-flow:hasInstruction
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain [
-      rdf:type owl:Class ;
-      owl:unionOf (
-          flow:Case
-          flow:Instruction
-          flow:Recipe
-        ) ;
-    ] ;
-  rdfs:range flow:Instruction ;
-.
 flow:hasMethod
-  rdf:type owl:FunctionalProperty ;
-  rdf:type owl:ObjectProperty ;
+  a owl:FunctionalProperty ;
+  a owl:ObjectProperty ;
   rdfs:domain flow:Instruction ;
   rdfs:label "hasMethod"@en ;
   rdfs:range flow:Method ;
 .
 flow:weight
-  rdf:type owl:DatatypeProperty ;
-  rdf:type owl:FunctionalProperty ;
+  a owl:DatatypeProperty ;
+  a owl:FunctionalProperty ;
   rdfs:domain flow:ComponentUnit ;
   rdfs:label "weight" ;
   rdfs:range xsd:integer ;
+.
+rdfs:variation
+  a owl:ObjectProperty ;
+  a owl:SymmetricProperty ;
+  rdfs:comment "A variation of the instruction. Those instructions must be interchangeable. For example bread shape batard and bread shape boulle instruction" ;
+  rdfs:domain flow:Instruction ;
+  rdfs:range flow:Instruction ;
 .

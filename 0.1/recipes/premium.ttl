@@ -1,8 +1,10 @@
 # baseURI: http://flow.recipes/ns/recipe/premium
+# imports: http://flow.recipes/ns/constraints
 # imports: http://flow.recipes/ns/core
 # imports: http://flow.recipes/ns/scheme#
 # prefix: premium
 
+@prefix constraints: <http://flow.recipes/ns/constraints#> .
 @prefix flow: <http://flow.recipes/ns/core#> .
 @prefix fs: <http://flow.recipes/ns/scheme#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -12,20 +14,22 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://flow.recipes/ns/recipe/premium>
-  rdf:type owl:Ontology ;
+  a owl:Ontology ;
+  owl:imports <http://flow.recipes/ns/constraints> ;
   owl:imports <http://flow.recipes/ns/core> ;
   owl:imports fs: ;
 .
 premium:hummus
-  rdf:type flow:Recipe ;
-  rdf:type owl:NamedIndividual ;
+  a flow:Recipe ;
+  a owl:NamedIndividual ;
   flow:hasInstructions premium:hummusRoastInstruction ;
   <http://schema.org/prepTime> "PT10M" ;
   rdfs:label "Hummus" ;
 .
 premium:hummusGrindInstruction
-  rdf:type flow:Instruction ;
-  rdf:type owl:NamedIndividual ;
+  a flow:Instruction ;
+  a owl:NamedIndividual ;
+  flow:depVariationInstruction premium:hummusRoastInstruction ;
   flow:hasComponentUnit [
       flow:componentAddition "½" ;
       flow:hasComponent fs:lemonJuice ;
@@ -41,12 +45,12 @@ premium:hummusGrindInstruction
   flow:hasComponentUnit [
       flow:hasComponent fs:salt ;
     ] ;
-  flow:hasInstruction premium:hummusMixInstruction ;
   flow:hasMethod fs:grind ;
 .
 premium:hummusMixInstruction
-  rdf:type flow:Instruction ;
-  rdf:type owl:NamedIndividual ;
+  a flow:Instruction ;
+  a owl:NamedIndividual ;
+  flow:depVariationInstruction premium:hummusGrindInstruction ;
   flow:hasComponentUnit [
       flow:componentAddition "x-vierge" ;
       flow:hasComponent fs:oliveOil ;
@@ -55,13 +59,12 @@ premium:hummusMixInstruction
   flow:hasMethod fs:mix ;
 .
 premium:hummusRoastInstruction
-  rdf:type flow:Instruction ;
-  rdf:type owl:NamedIndividual ;
+  a flow:Instruction ;
+  a owl:NamedIndividual ;
   flow:directions "regelmatig schudden"@nl ;
   flow:hasComponentUnit [
       flow:hasComponent fs:sesameSeed ;
       flow:weight 40 ;
     ] ;
-  flow:hasInstruction premium:hummusGrindInstruction ;
   flow:hasMethod fs:roast ;
 .

@@ -10,57 +10,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-gen:hummus
-  rdf:type flow:Recipe ;
-  rdf:type owl:NamedIndividual ;
-  flow:hasInstruction gen:hummusRoastInstruction ;
-  <http://schema.org/prepTime> "PT10M" ;
-  rdfs:label "Hummus" ;
-.
-gen:hummusGrindInstruction
-  rdf:type flow:Instruction ;
-  rdf:type owl:NamedIndividual ;
-  flow:hasComponentUnit [
-      flow:componentAddition "½" ;
-      flow:hasComponent fs:lemonJuice ;
-      flow:weight 20 ;
-    ] ;
-  flow:hasComponentUnit [
-      flow:hasComponent fs:cayennePepper ;
-    ] ;
-  flow:hasComponentUnit [
-      flow:hasComponent fs:chickPea ;
-      flow:weight 250 ;
-    ] ;
-  flow:hasComponentUnit [
-      flow:hasComponent fs:salt ;
-    ] ;
-  flow:hasInstruction gen:hummusMixInstruction ;
-  flow:hasMethod fs:grind ;
-.
-gen:hummusMixInstruction
-  rdf:type flow:Instruction ;
-  rdf:type owl:NamedIndividual ;
-  flow:hasComponentUnit [
-      flow:componentAddition "x-vierge" ;
-      flow:hasComponent fs:oliveOil ;
-      flow:weight 20 ;
-    ] ;
-  flow:hasMethod fs:mix ;
-.
-gen:hummusRoastInstruction
-  rdf:type flow:Instruction ;
-  rdf:type owl:NamedIndividual ;
-  flow:directions "regelmatig schudden"@nl ;
-  flow:hasComponentUnit [
-      flow:hasComponent fs:sesameSeed ;
-      flow:weight 40 ;
-    ] ;
-  flow:hasInstruction gen:hummusGrindInstruction ;
-  flow:hasMethod fs:roast ;
-.
 <http://flow.recipes/ns/recipe/generated>
-  rdf:type owl:Ontology ;
+  a owl:Ontology ;
   owl:imports <http://flow.recipes/ns/core> ;
   owl:imports fs: ;
 .
