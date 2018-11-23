@@ -40,3 +40,16 @@ gen:a2
   owl:imports <http://flow.recipes/ns/core> ;
   owl:imports fs: ;
 .
+<urn:uuid:2b0afb79-1f09-4644-9b73-175ca189960c>
+  a flow:Recipe ;
+  a owl:NamedIndividual ;
+.
+<urn:uuid:dcdcf7f4-fa6e-41e9-b671-bc7dc6dda118>
+  a flow:Recipe ;
+  a owl:NamedIndividual ;
+.
+<urn:uuid:e3834dcf-ce18-40c5-9ab7-9b4bfccae115>
+  a flow:Instruction ;
+  a owl:NamedIndividual ;
+  flow:hasMethod fs:grind ;
+.
