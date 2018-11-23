@@ -1,5 +1,6 @@
 # baseURI: http://flow.recipes/ns/core
 # imports: http://flow.recipes/ns/scheme#
+# imports: https://www.w3.org/2009/08/skos-reference/skos.rdf
 # prefix: flow
 
 @prefix : <http://flow.recipes/ns/core#> .
@@ -15,6 +16,7 @@
   a owl:Ontology ;
   rdfs:label "Flow recipes core ontology" ;
   owl:imports fs: ;
+  owl:imports <https://www.w3.org/2009/08/skos-reference/skos.rdf> ;
 .
 flow:Case
   a owl:Class ;
