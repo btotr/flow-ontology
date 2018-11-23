@@ -13,10 +13,10 @@ SELECT  ?name (SUM(?normalisedFiber) AS ?totalFiber)
 WHERE {
   ?recipe a flow:Recipe .
   ?recipe rdfs:label ?name .
-  # first instruction
-  ?recipe flow:hasInstructions ?instruction .
+  # instructions
+  ?recipe flow:instructions/rdf:rest*/rdf:first ?instruction .
   # get all ingredients
-  ?instruction flow:hasInstruction*/flow:hasComponentUnit ?unit .
+  ?instruction flow:hasComponentUnit ?unit .
   ?unit flow:hasComponent ?ingredient .
   # normalise fiber
   ?unit flow:weight ?weight .
