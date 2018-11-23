@@ -7,10 +7,13 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 
 #### all recipes which has roasting as methode
 
-SELECT  ?name
+SELECT  ?name ?instruction
 WHERE {
   ?recipe a flow:Recipe .
   ?recipe rdfs:label ?name .
-  ?recipe flow:hasInstructions ?instruction .
-  ?instruction flow:hasInstruction*/flow:hasMethode/skos:prefLabel "roosteren"@nl .
+  ?recipe flow:instructions/rdf:rest*/rdf:first ?instruction .
+  # need inferencing !
+  # ?instruction flow:hasMethode/skos:prefLabel "roosteren"@nl .
+  # without inferencing
+  ?instruction flow:hasMethod fs:roast .
 }

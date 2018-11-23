@@ -11,10 +11,12 @@
 @prefix premium: <http://flow.recipes/ns/recipe/premium#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spin: <http://spinrdf.org/spin#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://flow.recipes/ns/recipe/premium>
   a owl:Ontology ;
+  spin:imports <http://topbraid.org/spin/owlrl-all> ;
   owl:imports <http://flow.recipes/ns/constraints> ;
   owl:imports <http://flow.recipes/ns/core> ;
   owl:imports fs: ;
@@ -22,7 +24,11 @@
 premium:hummus
   a flow:Recipe ;
   a owl:NamedIndividual ;
-  flow:instructions (premium:hummusRoastInstruction premium:hummusGrindInstruction premium:hummusMixInstruction);
+  flow:instructions (
+      premium:hummusRoastInstruction
+      premium:hummusGrindInstruction
+      premium:hummusMixInstruction
+    ) ;
   <http://schema.org/prepTime> "PT10M" ;
   rdfs:label "Hummus" ;
 .
