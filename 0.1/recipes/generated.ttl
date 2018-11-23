@@ -1,20 +1,17 @@
 # baseURI: http://flow.recipes/ns/recipe/generated
+# imports: http://flow.recipes/ns/constraints
 # imports: http://flow.recipes/ns/core
 # imports: http://flow.recipes/ns/scheme#
 
+@prefix constraints: <http://flow.recipes/ns/constraints#> .
 @prefix flow: <http://flow.recipes/ns/core#> .
 @prefix fs: <http://flow.recipes/ns/scheme#> .
 @prefix gen: <http://flow.recipes/ns/generated#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spin: <http://spinrdf.org/spin#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-<http://flow.recipes/ns/recipe/generated>
-  a owl:Ontology ;
-  owl:imports <http://flow.recipes/ns/core> ;
-  owl:imports fs: ;
-.
 
 gen:a
   a flow:Recipe ;
@@ -35,4 +32,11 @@ gen:a2
   a owl:NamedIndividual ;
   flow:depVariationInstruction gen:a1 ;
   flow:hasMethod fs:grind ;
+.
+<http://flow.recipes/ns/recipe/generated>
+  a owl:Ontology ;
+  spin:imports <http://topbraid.org/spin/owlrl-all> ;
+  owl:imports <http://flow.recipes/ns/constraints> ;
+  owl:imports <http://flow.recipes/ns/core> ;
+  owl:imports fs: ;
 .
