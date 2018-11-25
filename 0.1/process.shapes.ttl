@@ -1,0 +1,82 @@
+# baseURI: http://flow.recipes/ns/process
+# imports: http://datashapes.org/dash
+# imports: http://flow.recipes/ns/core
+
+@prefix process: <http://flow.recipes/ns/process#> .
+@prefix core: <http://flow.recipes/ns/core#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://flow.recipes/ns/process>
+  a owl:Ontology ;
+  sh:entailment sh:Rules ;
+  owl:imports <http://datashapes.org/dash> ;
+  owl:imports <http://flow.recipes/ns/core> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+process:EndProcess
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:subClassOf process:Process ;
+.
+
+process:Input
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:subClassOf owl:Thing ;
+.
+process:Process
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:subClassOf owl:Thing ;
+    owl:sameAs core:Method ;
+    sh:rule [
+		a sh:SPARQLRule ;
+		sh:prefixes process: ;
+		sh:construct """
+			CONSTRUCT {
+				$this process:inputConnection ?input .
+			}
+			WHERE {
+				BIND ("todo" AS ?input) .
+			}
+			""" ;
+	] ;  
+	   sh:rule [
+		a sh:SPARQLRule ;
+		sh:prefixes process: ;
+		sh:construct """
+			CONSTRUCT {
+				process:startProcess process:inputConnection $this .
+			}
+			WHERE {
+				 ?instruction core:hasMethod $this
+				 ?instruction core:depVariationInstruction{0} ?x
+			}
+			""" ;
+	] ;  
+.
+process:StartProcess
+  a owl:Class ;
+  a sh:NodeShape ;
+  rdfs:subClassOf process:Process ;
+.
+process:endProcess
+  a process:EndProcess ;
+   a owl:NamedIndividual ;
+.
+process:inputConnection
+  a owl:ObjectProperty ;
+.
+process:processConnection
+  a owl:ObjectProperty ;
+  
+.
+process:startProcess
+  a process:StartProcess ;
+   a owl:NamedIndividual ;
+.
