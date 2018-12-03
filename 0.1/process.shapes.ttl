@@ -1,11 +1,13 @@
 # baseURI: http://flow.recipes/ns/process
 # imports: http://datashapes.org/dash
 # imports: http://flow.recipes/ns/core
+# imports: http://www.w3.org/ns/shacl
+# prefix: process
 
-@prefix process: <http://flow.recipes/ns/process#> .
 @prefix core: <http://flow.recipes/ns/core#> .
 @prefix dash: <http://datashapes.org/dash#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix process: <http://flow.recipes/ns/process#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -13,17 +15,21 @@
 
 <http://flow.recipes/ns/process>
   a owl:Ontology ;
-  sh:entailment sh:Rules ;
   owl:imports <http://datashapes.org/dash> ;
   owl:imports <http://flow.recipes/ns/core> ;
+  owl:imports sh: ;
   owl:versionInfo "Created with TopBraid Composer" ;
+  sh:entailment sh:Rules ;
+  sh:declare [
+		sh:prefix "process" ;
+		sh:namespace "http://flow.recipes/ns/process#"^^xsd:anyURI ;
+	] .
 .
 process:EndProcess
   a owl:Class ;
   a sh:NodeShape ;
   rdfs:subClassOf process:Process ;
 .
-
 process:Input
   a owl:Class ;
   a sh:NodeShape ;
@@ -33,32 +39,23 @@ process:Process
   a owl:Class ;
   a sh:NodeShape ;
   rdfs:subClassOf owl:Thing ;
-    owl:sameAs core:Method ;
-    sh:rule [
-		a sh:SPARQLRule ;
-		sh:prefixes process: ;
-		sh:construct """
+  owl:sameAs core:Method ;
+  sh:rule [
+      a sh:SPARQLRule ;
+      rdfs:label "add a process connection if there is a  process which depends on the focus node" ;
+      sh:construct """
 			CONSTRUCT {
-				$this process:inputConnection ?input .
+				$this process:processConnection ?process .
 			}
 			WHERE {
-				BIND ("todo" AS ?input) .
+				?process ^core:hasMethode ?instruction
+				?instruction core:depVariationInstruction ?focusNodeInstruction
+				?focusNodeInstruction core:hasMethode $this .
 			}
 			""" ;
-	] ;  
-	   sh:rule [
-		a sh:SPARQLRule ;
-		sh:prefixes process: ;
-		sh:construct """
-			CONSTRUCT {
-				process:startProcess process:inputConnection $this .
-			}
-			WHERE {
-				 ?instruction core:hasMethod $this
-				 ?instruction core:depVariationInstruction{0} ?x
-			}
-			""" ;
-	] ;  
+      sh:order 1 ;
+      sh:prefixes process: ;
+    ] ;
 .
 process:StartProcess
   a owl:Class ;
@@ -67,16 +64,21 @@ process:StartProcess
 .
 process:endProcess
   a process:EndProcess ;
-   a owl:NamedIndividual ;
+  a owl:NamedIndividual ;
 .
 process:inputConnection
   a owl:ObjectProperty ;
 .
+process:procesLabel
+  a owl:DatatypeProperty ;
+  a owl:FunctionalProperty ;
+  rdfs:domain process:Process ;
+  rdfs:label "process label" ;
+.
 process:processConnection
   a owl:ObjectProperty ;
-  
 .
 process:startProcess
   a process:StartProcess ;
-   a owl:NamedIndividual ;
+  a owl:NamedIndividual ;
 .
