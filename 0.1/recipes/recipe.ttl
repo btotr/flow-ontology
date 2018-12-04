@@ -2,6 +2,7 @@
 # imports: http://flow.recipes/ns/process
 # imports: http://flow.recipes/ns/recipe/generated
 # imports: http://flow.recipes/ns/recipe/premium
+# imports: http://www.w3.org/2004/02/skos/core
 # prefix: recipe
 
 @prefix : <http://flow.recipes/ns/recipe#> .
@@ -19,4 +20,5 @@
   owl:imports <http://flow.recipes/ns/process> ;
   owl:imports <http://flow.recipes/ns/recipe/generated> ;
   owl:imports <http://flow.recipes/ns/recipe/premium> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
 .
