@@ -1,7 +1,7 @@
 # baseURI: http://flow.recipes/ns/process
 # imports: http://datashapes.org/dash
 # imports: http://flow.recipes/ns/core
-# imports: http://www.w3.org/ns/shacl
+# imports: http://www.w3.org/ns/shacl#
 # prefix: process
 
 @prefix core: <http://flow.recipes/ns/core#> .
@@ -11,6 +11,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix spin: <http://spinrdf.org/spin#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://flow.recipes/ns/process>
@@ -19,11 +20,15 @@
   owl:imports <http://flow.recipes/ns/core> ;
   owl:imports sh: ;
   owl:versionInfo "Created with TopBraid Composer" ;
-  sh:entailment sh:Rules ;
   sh:declare [
-		sh:prefix "process" ;
-		sh:namespace "http://flow.recipes/ns/process#"^^xsd:anyURI ;
-	] .
+      sh:namespace "http://flow.recipes/ns/core#"^^xsd:anyURI ;
+      sh:prefix "core" ;
+    ] ;
+  sh:declare [
+      sh:namespace "http://flow.recipes/ns/process#"^^xsd:anyURI ;
+      sh:prefix "process" ;
+    ] ;
+  sh:entailment sh:Rules ;
 .
 process:EndProcess
   a owl:Class ;
@@ -40,22 +45,7 @@ process:Process
   a sh:NodeShape ;
   rdfs:subClassOf owl:Thing ;
   owl:sameAs core:Method ;
-  sh:rule [
-      a sh:SPARQLRule ;
-      rdfs:label "add a process connection if there is a  process which depends on the focus node" ;
-      sh:construct """
-			CONSTRUCT {
-				$this process:processConnection ?process .
-			}
-			WHERE {
-				?process ^core:hasMethode ?instruction
-				?instruction core:depVariationInstruction ?focusNodeInstruction
-				?focusNodeInstruction core:hasMethode $this .
-			}
-			""" ;
-      sh:order 1 ;
-      sh:prefixes process: ;
-    ] ;
+  sh:rule process:processConnectionRule ;
 .
 process:StartProcess
   a owl:Class ;
@@ -77,6 +67,30 @@ process:procesLabel
 .
 process:processConnection
   a owl:ObjectProperty ;
+.
+process:processConnectionRule
+  a sh:SPARQLRule ;
+  rdfs:label "add a process connection if there is a  process which depends on the focus node" ;
+  sh:construct """CONSTRUCT {
+    				$this process:processConnection ?process .
+}
+WHERE {
+?process ^core:hasMethod ?instruction .
+				?instruction core:depVariationInstruction ?focusNodeInstruction .
+				?focusNodeInstruction core:hasMethod $this .
+}""" ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://flow.recipes/ns/core#"^^xsd:anyURI ;
+          sh:prefix "core" ;
+        ] ;
+    ] ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://flow.recipes/ns/process#"^^xsd:anyURI ;
+          sh:prefix "process" ;
+        ] ;
+    ] ;
 .
 process:startProcess
   a process:StartProcess ;
