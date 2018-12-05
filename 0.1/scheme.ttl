@@ -1,4 +1,5 @@
 # baseURI: http://flow.recipes/ns/scheme#
+# imports: http://topbraid.org/skos.shapes
 # imports: http://www.w3.org/2004/02/skos/core
 # prefix: fs
 
@@ -15,9 +16,7 @@
 
 <http://flow.recipes/ns/scheme>
   a owl:Ontology ;
-.
-fs:
-  a owl:Ontology ;
+  owl:imports <http://topbraid.org/skos.shapes> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
 .
 fs:ahornsiroop
