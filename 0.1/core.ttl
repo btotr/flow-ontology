@@ -142,7 +142,7 @@ rdfs:hasInstruction
   rdfs:label "Instruction" ;
   rdfs:range flow:Instruction ;
 .
-core:variation
+flow:variation
   a owl:ObjectProperty ;
   a owl:SymmetricProperty ;
   rdfs:comment "A variation of the instruction. Those instructions must be interchangeable. For example bread shape batard and bread shape boulle instruction" ;
