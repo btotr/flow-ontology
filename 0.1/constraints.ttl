@@ -21,11 +21,15 @@ core:Recipe
 .
 
 constraint:recipeMustHaveInstructions
-	  a sh:PropertyShape ;
-	  sh:path core:recipeMustHaveInstructions ;
-	  sh:message "An recipe must have a list of instructions" ;
-	  sh:maxCount 1 ;
-	  sh:minCount 1 ;
+  a sh:PropertyShape ;
+  sh:path core:instructions ;
+  sh:message "An recipe must have a list of instructions" ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:qualifiedValueShape [
+	sh:path core:instructions ;
+	sh:hasValue rdf:List ;
+  ] ;
 .
 
 core:Instruction
