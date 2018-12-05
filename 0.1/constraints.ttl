@@ -14,6 +14,20 @@
   a owl:Ontology ;
   owl:imports <http://flow.recipes/ns/core> ;
 .
+
+core:Recipe
+  a sh:NodeShape ;
+  sh:property constraint:recipeMustHaveInstructions ;
+.
+
+constraint:recipeMustHaveInstructions
+	  a sh:PropertyShape ;
+	  sh:path core:recipeMustHaveInstructions ;
+	  sh:message "An recipe must have a list of instructions" ;
+	  sh:maxCount 1 ;
+	  sh:minCount 1 ;
+.
+
 core:Instruction
   a sh:NodeShape ;
   sh:closed true ;
