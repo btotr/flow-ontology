@@ -37,18 +37,18 @@ core:Instruction
 .
 
 constraint:instructionMustHaveMethod
-	  a sh:PropertyShape ;
-	  sh:path core:hasMethod ;
-	  sh:message "An Instruction must have a method" ;
-	  sh:maxCount 1 ;
-	  sh:minCount 1 ;
+  a sh:PropertyShape ;
+  sh:path core:hasMethod ;
+  sh:message "An Instruction must have a method" ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
 .
 
 constraint:instructionOnlyOneDirections
-	  a sh:PropertyShape ;
-	  sh:path core:directions ;
-	  sh:message "Only one Instruction is allowed" ;
-	  sh:maxCount 1 ;
+  a sh:PropertyShape ;
+  sh:path core:directions ;
+  sh:message "Only one Instruction is allowed" ;
+  sh:maxCount 1 ;
 .
 
 core:ComponentUnit
@@ -62,37 +62,37 @@ core:ComponentUnit
   sh:property constraint:additionMustBeAString ;
 .
 constraint:componentUnitOnlyOneWeight
-	  a sh:PropertyShape ;
-	  sh:path core:weight ;
-	  sh:message "Only one weight is allowed" ;
-	  sh:maxCount 1 ;
+  a sh:PropertyShape ;
+  sh:path core:weight ;
+  sh:message "Only one weight is allowed" ;
+  sh:maxCount 1 ;
 .
 
 constraint:componentUnitOnlyOneComponentAddition
-	  a sh:PropertyShape ;
-	  sh:path core:componentAddition ;
-	  sh:message "Only one addition is allowed" ;
-	  sh:maxCount 1 ;
+  a sh:PropertyShape ;
+  sh:path core:componentAddition ;
+  sh:message "Only one addition is allowed" ;
+  sh:maxCount 1 ;
 .
 
 constraint:componentUnitMustHaveComponent 
-	  a sh:PropertyShape ;
-	  sh:path core:componentAddition ;
-	  sh:message "Must have one ingredient" ;
-	  sh:maxCount 1 ;
-	  sh:minCount 1 ;
+  a sh:PropertyShape ;
+  sh:path core:componentAddition ;
+  sh:message "Must have one ingredient" ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
 .
  
 constraint:weightMustBeAInterger
-	  a sh:PropertyShape ;
-	  sh:path core:componentAddition ;
-	  sh:message "weight must be a integer" ;
-	  sh:datatype xsd:integer ;
+  a sh:PropertyShape ;
+  sh:path core:componentAddition ;
+  sh:message "weight must be a integer" ;
+  sh:datatype xsd:integer ;
 .
 
 constraint:additionMustBeAString
-	  a sh:PropertyShape ;
-	  sh:path core:componentAddition ;
-	  sh:message "Addition must be a string" ;
-	  sh:datatype xsd:string ;
+  a sh:PropertyShape ;
+  sh:path core:componentAddition ;
+  sh:message "Addition must be a string" ;
+  sh:datatype xsd:string ;
 .
