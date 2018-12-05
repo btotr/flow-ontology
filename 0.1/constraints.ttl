@@ -121,8 +121,11 @@ constraint:componentUnitMustHaveComponent
 constraint:additionMustBeAString
   a sh:PropertyShape ;
   sh:path core:componentAddition ;
-  sh:message "Addition must be a string with a language tag" ;
-  sh:datatype rdf:langString ;
+  sh:message "Addition must be a string" ;
+  sh:or (
+     [sh:datatype xsd:string]
+     [sh:datatype rdf:langString]
+   );
   sh:severity sh:Violation ;
 .
  
