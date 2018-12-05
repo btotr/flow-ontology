@@ -1,8 +1,8 @@
 # baseURI: http://flow.recipes/ns/constraints
 # imports: http://flow.recipes/ns/core
 
-@prefix : <http://flow.recipes/ns/constraints#> .
-@prefix flow: <http://flow.recipes/ns/core#> .
+@prefix constraint: <http://flow.recipes/ns/constraints#> .
+@prefix core: <http://flow.recipes/ns/core#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -14,15 +14,71 @@
   a owl:Ontology ;
   owl:imports <http://flow.recipes/ns/core> ;
 .
-flow:Instruction
+core:Instruction
   a sh:NodeShape ;
-  sh:property flow:MustHaveOneMethode ;
+  sh:closed true ;
+  sh:ignoredProperties ( rdf:type ) ;
+  sh:property constraint:instructionMustHaveMethod ;
+  sh:property constraint:instructionOnlyOneDirections ;
 .
 
-flow:MustHaveOneMethode
-  a sh:PropertyShape ;
-  sh:path flow:hasMethod ;
-  rdfs:comment "An Instruction must have a method" ;
-  sh:maxCount 1 ;
-  sh:minCount 1 ;
+constraint:instructionMustHaveMethod
+	  a sh:PropertyShape ;
+	  sh:path core:hasMethod ;
+	  sh:message "An Instruction must have a method" ;
+	  sh:maxCount 1 ;
+	  sh:minCount 1 ;
+.
+
+constraint:instructionOnlyOneDirections
+	  a sh:PropertyShape ;
+	  sh:path core:directions ;
+	  sh:message "Only one Instruction is allowed" ;
+	  sh:maxCount 1 ;
+.
+
+core:ComponentUnit
+  a sh:NodeShape ;
+  sh:closed true ;
+  sh:ignoredProperties ( rdf:type ) ;
+  sh:property constraint:componentUnitOnlyOneWeight ;
+  sh:property constraint:componentUnitOnlyOneComponentAddition ;
+  sh:property constraint:componentUnitMustHaveComponent ;
+  sh:property constraint:weightMustBeAInterger ;
+  sh:property constraint:additionMustBeAString ;
+.
+constraint:componentUnitOnlyOneWeight
+	  a sh:PropertyShape ;
+	  sh:path core:weight ;
+	  sh:message "Only one weight is allowed" ;
+	  sh:maxCount 1 ;
+.
+
+constraint:componentUnitOnlyOneComponentAddition
+	  a sh:PropertyShape ;
+	  sh:path core:componentAddition ;
+	  sh:message "Only one addition is allowed" ;
+	  sh:maxCount 1 ;
+.
+
+constraint:componentUnitMustHaveComponent 
+	  a sh:PropertyShape ;
+	  sh:path core:componentAddition ;
+	  sh:message "Must have one ingredient" ;
+	  sh:maxCount 1 ;
+	  sh:minCount 1 ;
+.
+ 
+constraint:weightMustBeAInterger
+	  a sh:PropertyShape ;
+	  sh:path core:componentAddition ;
+	  sh:message "weight must be a integer" ;
+	  sh:datatype xsd:integer ;
+.
+
+constraint:additionMustBeAString
+	  a sh:PropertyShape ;
+	  sh:path core:componentAddition ;
+	  sh:message "Addition must be a string" ;
+	  sh:datatype xsd:string ;
 .
