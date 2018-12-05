@@ -23,21 +23,23 @@ core:Recipe
 constraint:recipeMustHaveInstructions
   a sh:PropertyShape ;
   sh:path core:instructions ;
-  sh:message "An recipe must have a list of instructions" ;
+  sh:message "An recipe should have a list of instructions" ;
   sh:maxCount 1 ;
   sh:minCount 1 ;
   sh:qualifiedValueShape [
 	sh:path core:instructions ;
 	sh:hasValue rdf:List ;
   ] ;
+  sh:severity sh:info ;
 .
 
 core:Instruction
   a sh:NodeShape ;
   sh:closed true ;
-  sh:ignoredProperties ( rdf:type ) ;
+  sh:ignoredProperties ( rdf:type core:variation) ;
   sh:property constraint:instructionMustHaveMethod ;
   sh:property constraint:instructionOnlyOneDirections ;
+  sh:property constraint:depVariationMustBeInstruction ;
 .
 
 constraint:instructionMustHaveMethod
@@ -53,7 +55,17 @@ constraint:instructionOnlyOneDirections
   sh:path core:directions ;
   sh:message "Only one Instruction is allowed" ;
   sh:maxCount 1 ;
+  sh:severity sh:Violation ;
 .
+
+constraint:depVariationMustBeInstruction 
+  a sh:PropertyShape ;
+  sh:path core:depVariationInstruction;
+  sh:message "dependency must be a intruction" ;
+  sh:severity sh:Violation ;
+  sh:class core:Instruction ;
+.
+
 
 core:ComponentUnit
   a sh:NodeShape ;
@@ -70,6 +82,7 @@ constraint:componentUnitOnlyOneWeight
   sh:path core:weight ;
   sh:message "Only one weight is allowed" ;
   sh:maxCount 1 ;
+  sh:severity sh:Violation ;
 .
 
 constraint:componentUnitOnlyOneComponentAddition
@@ -77,6 +90,7 @@ constraint:componentUnitOnlyOneComponentAddition
   sh:path core:componentAddition ;
   sh:message "Only one addition is allowed" ;
   sh:maxCount 1 ;
+  sh:severity sh:Violation ;
 .
 
 constraint:componentUnitMustHaveComponent 
@@ -85,6 +99,7 @@ constraint:componentUnitMustHaveComponent
   sh:message "Must have one ingredient" ;
   sh:maxCount 1 ;
   sh:minCount 1 ;
+  sh:severity sh:Violation ;
 .
  
 constraint:weightMustBeAInterger
@@ -92,6 +107,7 @@ constraint:weightMustBeAInterger
   sh:path core:componentAddition ;
   sh:message "weight must be a integer" ;
   sh:datatype xsd:integer ;
+  sh:severity sh:Violation ;
 .
 
 constraint:additionMustBeAString
@@ -99,4 +115,5 @@ constraint:additionMustBeAString
   sh:path core:componentAddition ;
   sh:message "Addition must be a string" ;
   sh:datatype xsd:string ;
+  sh:severity sh:Violation ;
 .
