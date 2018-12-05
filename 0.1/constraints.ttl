@@ -15,13 +15,17 @@
   owl:imports <http://flow.recipes/ns/core> ;
 .
 
-core:Recipe
+constraint:RecipeShape
   a sh:NodeShape ;
+  sh:targetClass core:Recipe ;
+  sh:nodeKind sh:IRI ;
   sh:property constraint:recipeMustHaveInstructions ;
 .
 
 constraint:recipeMustHaveInstructions
   a sh:PropertyShape ;
+  # still testing
+  sh:deactivated true ;
   sh:path core:instructions ;
   sh:message "An recipe should have a list of instructions" ;
   sh:maxCount 1 ;
@@ -30,15 +34,18 @@ constraint:recipeMustHaveInstructions
 	sh:path core:instructions ;
 	sh:hasValue rdf:List ;
   ] ;
-  sh:severity sh:info ;
+  sh:severity sh:Info ;
 .
 
-core:Instruction
+constraint:InstructionShape
   a sh:NodeShape ;
+  sh:targetClass core:Instruction ;
+  sh:nodeKind sh:IRI ;
   sh:closed true ;
-  sh:ignoredProperties ( rdf:type core:variation) ;
+  sh:ignoredProperties ( rdf:type core:variation core:hasComponentUnit) ;
   sh:property constraint:instructionMustHaveMethod ;
   sh:property constraint:instructionOnlyOneDirections ;
+  sh:property constraint:directionsMustBeAString ;
   sh:property constraint:depVariationMustBeInstruction ;
 .
 
@@ -58,6 +65,14 @@ constraint:instructionOnlyOneDirections
   sh:severity sh:Violation ;
 .
 
+constraint:directionsMustBeAString
+  a sh:PropertyShape ;
+  sh:path core:directions ;
+  sh:message "Directions must be a string with a language tag" ;
+  sh:datatype rdf:langString ;
+  sh:severity sh:Violation ;
+.
+
 constraint:depVariationMustBeInstruction 
   a sh:PropertyShape ;
   sh:path core:depVariationInstruction;
@@ -67,8 +82,10 @@ constraint:depVariationMustBeInstruction
 .
 
 
-core:ComponentUnit
+constraint:ComponentUnitShape
   a sh:NodeShape ;
+  sh:targetClass core:ComponentUnit ;
+  sh:nodeKind sh:BlankNodeOrIRI ;
   sh:closed true ;
   sh:ignoredProperties ( rdf:type ) ;
   sh:property constraint:componentUnitOnlyOneWeight ;
@@ -95,25 +112,25 @@ constraint:componentUnitOnlyOneComponentAddition
 
 constraint:componentUnitMustHaveComponent 
   a sh:PropertyShape ;
-  sh:path core:componentAddition ;
+  sh:path core:hasComponent ;
   sh:message "Must have one ingredient" ;
   sh:maxCount 1 ;
   sh:minCount 1 ;
   sh:severity sh:Violation ;
 .
+constraint:additionMustBeAString
+  a sh:PropertyShape ;
+  sh:path core:componentAddition ;
+  sh:message "Addition must be a string with a language tag" ;
+  sh:datatype rdf:langString ;
+  sh:severity sh:Violation ;
+.
  
 constraint:weightMustBeAInterger
   a sh:PropertyShape ;
-  sh:path core:componentAddition ;
+  sh:path core:weight ;
   sh:message "weight must be a integer" ;
   sh:datatype xsd:integer ;
   sh:severity sh:Violation ;
 .
 
-constraint:additionMustBeAString
-  a sh:PropertyShape ;
-  sh:path core:componentAddition ;
-  sh:message "Addition must be a string" ;
-  sh:datatype xsd:string ;
-  sh:severity sh:Violation ;
-.

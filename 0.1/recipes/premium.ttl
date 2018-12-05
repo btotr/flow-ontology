@@ -37,16 +37,16 @@ premium:hummusGrindInstruction
   a owl:NamedIndividual ;
   flow:depVariationInstruction premium:hummusRoastInstruction ;
   flow:hasComponentUnit [
-      flow:componentAddition "½" ;
+      flow:componentAddition "½"@nl ;
       flow:hasComponent fs:lemonJuice ;
-      flow:weight 20 ;
+      flow:weight 20^^xsd:integer ;
     ] ;
   flow:hasComponentUnit [
       flow:hasComponent fs:cayennePepper ;
     ] ;
   flow:hasComponentUnit [
       flow:hasComponent fs:chickPea ;
-      flow:weight 250 ;
+      flow:weight 250^^xsd:integer ;
     ] ;
   flow:hasComponentUnit [
       flow:hasComponent fs:salt ;
@@ -58,9 +58,9 @@ premium:hummusMixInstruction
   a owl:NamedIndividual ;
   flow:depVariationInstruction premium:hummusGrindInstruction ;
   flow:hasComponentUnit [
-      flow:componentAddition "x-vierge" ;
+      flow:componentAddition "x-vierge"@nl ;
       flow:hasComponent fs:oliveOil ;
-      flow:weight 20 ;
+      flow:weight 20^^xsd:integer ;
     ] ;
   flow:hasMethod fs:mix ;
 .
@@ -70,7 +70,7 @@ premium:hummusRoastInstruction
   flow:directions "regelmatig schudden"@nl ;
   flow:hasComponentUnit [
       flow:hasComponent fs:sesameSeed ;
-      flow:weight 40 ;
+      flow:weight 40^^xsd:integer ;
     ] ;
   flow:hasMethod fs:roast ;
 .
