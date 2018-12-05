@@ -17,12 +17,7 @@
   owl:imports fs: ;
   owl:versionInfo "0.0.1" ;
 .
-flow:Case
-  a owl:Class ;
-  rdfs:comment "A case is a shortcut to an instruction based on some state. e.g. if dough is to stiff go to instruction add some additional flour." ;
-  rdfs:label "Case" ;
-  rdfs:subClassOf owl:Thing ;
-.
+
 flow:Component
   a owl:Class ;
   rdfs:comment "An ingredient used in the instruction. This could be either a raw ingredient such as salt or a recipe which has the function as an ingredient such as custard" ;
@@ -109,18 +104,7 @@ flow:directions
   rdfs:label "directions" ;
   rdfs:range xsd:string ;
 .
-flow:hasCase
-  a owl:ObjectProperty ;
-  rdfs:domain [
-      a owl:Class ;
-      owl:unionOf (
-          flow:Case
-          flow:Instruction
-        ) ;
-    ] ;
-  rdfs:label "hasCase"@en ;
-  rdfs:range flow:Case ;
-.
+
 flow:hasComponent
   a owl:ObjectProperty ;
   rdfs:domain flow:ComponentUnit ;
@@ -151,14 +135,10 @@ flow:weight
   rdfs:label "weight" ;
   rdfs:range xsd:integer ;
 .
-rdfs:case
-  a owl:DatatypeProperty ;
-  rdfs:range xsd:string ;
-.
+
 rdfs:hasInstruction
   a owl:ObjectProperty ;
   rdfs:comment "shortcut to an instruction" ;
-  rdfs:domain flow:Case ;
   rdfs:label "Instruction" ;
   rdfs:range flow:Instruction ;
 .
