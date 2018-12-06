@@ -30,55 +30,37 @@
     ] ;
   sh:entailment sh:Rules ;
 .
-process:EndProcess
-  a owl:Class ;
-  a sh:NodeShape ;
-  rdfs:subClassOf process:Process ;
-.
 process:Input
   a owl:Class ;
-  a sh:NodeShape ;
-  rdfs:subClassOf owl:Thing ;
 .
+
 process:Process
   a owl:Class ;
   a sh:NodeShape ;
   rdfs:subClassOf owl:Thing ;
   owl:sameAs core:Method ;
+  sh:rule process:endProcessRule ;
+  sh:rule process:inputConnectionRule ;
   sh:rule process:processConnectionRule ;
+  sh:rule process:startProcessRule ;
 .
 process:StartProcess
-  a owl:Class ;
-  a sh:NodeShape ;
-  rdfs:subClassOf process:Process ;
-.
-process:endProcess
-  a process:EndProcess ;
+  a process:Process ;
   a owl:NamedIndividual ;
 .
-process:inputConnection
-  a owl:ObjectProperty ;
+process:endProcess
+  a process:Process ;
+  a owl:NamedIndividual ;
 .
-process:procesLabel
-  a owl:DatatypeProperty ;
-  a owl:FunctionalProperty ;
-  rdfs:domain process:Process ;
-  rdfs:label "process label" ;
-.
-process:processConnection
-  a owl:ObjectProperty ;
-.
-process:processConnectionRule
+process:endProcessRule
   a sh:SPARQLRule ;
-  rdfs:label "add a process connection if there is a  process which depends on the focus node" ;
+  rdfs:label "add a end process" ;
   sh:construct """CONSTRUCT {
-    				$this process:processConnection ?process .
-}
-WHERE {
-?process ^core:hasMethod ?instruction .
-				?instruction core:depVariationInstruction ?focusNodeInstruction .
-				?focusNodeInstruction core:hasMethod $this .
-}""" ;
+	 $this process:processConnection process:endProcess .
+  } WHERE {
+	$this ^core:hasMethod ?instruction .
+	?instruction !^core:depVariationInstruction ?depInstruction .
+  }""" ;
   sh:prefixes [
       sh:declare [
           sh:namespace "http://flow.recipes/ns/core#"^^xsd:anyURI ;
@@ -92,7 +74,116 @@ WHERE {
         ] ;
     ] ;
 .
-process:startProcess
-  a process:StartProcess ;
-  a owl:NamedIndividual ;
+process:inputConnection
+  a owl:ObjectProperty ;
 .
+process:inputConnectionRule
+  a sh:SPARQLRule ;
+  rdfs:label "add a input connection if there is a  component unit" ;
+  sh:construct """CONSTRUCT {
+	$this process:inputConnection ?input .
+  } WHERE {
+	$this ^core:hasMethod ?instruction .
+	?instruction core:hasComponentUnit ?componentUnit .
+	?componentUnit process:partOfInput ?input .
+  }""" ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://flow.recipes/ns/core#"^^xsd:anyURI ;
+          sh:prefix "core" ;
+        ] ;
+    ] ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://flow.recipes/ns/process#"^^xsd:anyURI ;
+          sh:prefix "process" ;
+        ] ;
+    ] ;
+.
+process:partOfInput
+  a owl:ObjectProperty ;
+.
+process:procesLabel
+  a owl:DatatypeProperty ;
+  a owl:FunctionalProperty ;
+  rdfs:label "process label" ;
+.
+process:processConnection
+  a owl:ObjectProperty ;
+.
+process:processConnectionRule
+  a sh:SPARQLRule ;
+  rdfs:label "add a process connection if there is a  process which depends on the focus node" ;
+  sh:construct """CONSTRUCT {
+	$this process:processConnection ?process .
+  } WHERE {
+	?process ^core:hasMethod ?instruction .
+	?instruction core:depVariationInstruction ?focusNodeInstruction .
+	?focusNodeInstruction core:hasMethod $this .
+  }""" ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://flow.recipes/ns/core#"^^xsd:anyURI ;
+          sh:prefix "core" ;
+        ] ;
+    ] ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://flow.recipes/ns/process#"^^xsd:anyURI ;
+          sh:prefix "process" ;
+        ] ;
+    ] ;
+.
+process:startProcessRule
+  a sh:SPARQLRule ;
+  rdfs:label "add a start process" ;
+  sh:construct """CONSTRUCT {
+	 process:startProcess process:processConnection $this .
+  } WHERE {
+	$this ^core:hasMethod ?instruction .
+	?instruction !core:depVariationInstruction ?depInstruction .
+  }""" ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://flow.recipes/ns/core#"^^xsd:anyURI ;
+          sh:prefix "core" ;
+        ] ;
+    ] ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://flow.recipes/ns/process#"^^xsd:anyURI ;
+          sh:prefix "process" ;
+        ] ;
+    ] ;
+.
+
+
+process:inputRule
+  a sh:SPARQLRule ;
+  rdfs:label "add a start process" ;
+  sh:construct """CONSTRUCT {
+	  $this process:partOfInput ?input .
+	  ?input rdf:type process:input .
+  } WHERE {
+	$this ^core:hasComponentUnit ?componentUnit .
+  }""" ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://flow.recipes/ns/core#"^^xsd:anyURI ;
+          sh:prefix "core" ;
+        ] ;
+    ] ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://flow.recipes/ns/process#"^^xsd:anyURI ;
+          sh:prefix "process" ;
+        ] ;
+    ] ;
+    sh:prefixes [ sh:declare [
+    sh:prefix "rdf" ;
+    sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   ]
+  ] ;
+.
+
+
