@@ -32,11 +32,12 @@ constraint:InstructionShape
   sh:targetClass core:Instruction ;
   sh:nodeKind sh:IRI ;
   sh:closed true ;
-  sh:ignoredProperties ( rdf:type core:variation core:hasComponentUnit) ;
+  sh:ignoredProperties ( rdf:type core:hasComponentUnit) ;
   sh:property constraint:instructionMustHaveMethod ;
   sh:property constraint:instructionOnlyOneDirections ;
   sh:property constraint:directionsMustBeAString ;
   sh:property constraint:depVariationMustBeInstruction ;
+  sh:property constraint:variationMustBeInstruction ;
 .
 
 constraint:instructionMustHaveMethod
@@ -71,6 +72,13 @@ constraint:depVariationMustBeInstruction
   sh:class core:Instruction ;
 .
 
+constraint:variationMustBeInstruction 
+  a sh:PropertyShape ;
+  sh:path core:variation;
+  sh:message "dependency must be a intruction" ;
+  sh:severity sh:Violation ;
+  sh:class core:Instruction ;
+.
 
 constraint:ComponentUnitShape
   a sh:NodeShape ;
@@ -126,7 +134,6 @@ constraint:weightMustBeAInterger
   sh:datatype xsd:integer ;
   sh:severity sh:Violation ;
 .
-
 
 constraint:MaxSizeListConstraintComponent
  a sh:ConstraintComponent ;
