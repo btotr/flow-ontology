@@ -5,7 +5,7 @@
 # prefix: premium
 
 @prefix constraints: <http://flow.recipes/ns/constraints#> .
-@prefix flow: <http://flow.recipes/ns/core#> .
+@prefix core: <http://flow.recipes/ns/core#> .
 @prefix fs: <http://flow.recipes/ns/scheme#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix premium: <http://flow.recipes/ns/recipe/premium#> .
@@ -22,9 +22,9 @@
   owl:imports fs: ;
 .
 premium:hummus
-  a flow:Recipe ;
+  a core:Recipe ;
   a owl:NamedIndividual ;
-  flow:instructions (
+  core:instructions (
       premium:hummusRoastInstruction
       premium:hummusGrindInstruction
       premium:hummusMixInstruction
@@ -33,44 +33,40 @@ premium:hummus
   rdfs:label "Hummus" ;
 .
 premium:hummusGrindInstruction
-  a flow:Instruction ;
+  a core:Instruction ;
   a owl:NamedIndividual ;
-  flow:depVariationInstruction premium:hummusRoastInstruction ;
-  flow:hasComponentUnit [
-      flow:componentAddition "½" ;
-      flow:hasComponent fs:lemonJuice ;
-      flow:weight 20^^xsd:integer ;
+  core:depVariationInstruction premium:hummusRoastInstruction ;
+  core:hasComponentUnit [
+      core:componentAddition "½" ;
+      core:hasComponent fs:lemonJuice ;
     ] ;
-  flow:hasComponentUnit [
-      flow:hasComponent fs:cayennePepper ;
+  core:hasComponentUnit [
+      core:hasComponent fs:cayennePepper ;
     ] ;
-  flow:hasComponentUnit [
-      flow:hasComponent fs:chickPea ;
-      flow:weight 250^^xsd:integer ;
+  core:hasComponentUnit [
+      core:hasComponent fs:chickPea ;
     ] ;
-  flow:hasComponentUnit [
-      flow:hasComponent fs:salt ;
+  core:hasComponentUnit [
+      core:hasComponent fs:salt ;
     ] ;
-  flow:hasMethod fs:grind ;
+  core:hasMethod fs:grind ;
 .
 premium:hummusMixInstruction
-  a flow:Instruction ;
+  a core:Instruction ;
   a owl:NamedIndividual ;
-  flow:depVariationInstruction premium:hummusGrindInstruction ;
-  flow:hasComponentUnit [
-      flow:componentAddition "x-vierge" ;
-      flow:hasComponent fs:oliveOil ;
-      flow:weight 20^^xsd:integer ;
+  core:depVariationInstruction premium:hummusGrindInstruction ;
+  core:hasComponentUnit [
+      core:componentAddition "x-vierge" ;
+      core:hasComponent fs:oliveOil ;
     ] ;
-  flow:hasMethod fs:mix ;
+  core:hasMethod fs:mix ;
 .
 premium:hummusRoastInstruction
-  a flow:Instruction ;
+  a core:Instruction ;
   a owl:NamedIndividual ;
-  flow:directions "regelmatig schudden"@nl ;
-  flow:hasComponentUnit [
-      flow:hasComponent fs:sesameSeed ;
-      flow:weight 40^^xsd:integer ;
+  core:directions "regelmatig schudden"@nl ;
+  core:hasComponentUnit [
+      core:hasComponent fs:sesameSeed ;
     ] ;
-  flow:hasMethod fs:roast ;
+  core:hasMethod fs:roast ;
 .
