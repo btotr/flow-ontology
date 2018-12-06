@@ -39,12 +39,14 @@ premium:hummusGrindInstruction
   core:hasComponentUnit [
       core:componentAddition "½" ;
       core:hasComponent fs:lemonJuice ;
+      flow:weight 20^^xsd:integer ;
     ] ;
   core:hasComponentUnit [
       core:hasComponent fs:cayennePepper ;
     ] ;
   core:hasComponentUnit [
       core:hasComponent fs:chickPea ;
+      flow:weight 250^^xsd:integer ;
     ] ;
   core:hasComponentUnit [
       core:hasComponent fs:salt ;
@@ -58,6 +60,7 @@ premium:hummusMixInstruction
   core:hasComponentUnit [
       core:componentAddition "x-vierge" ;
       core:hasComponent fs:oliveOil ;
+      flow:weight 20^^xsd:integer ;
     ] ;
   core:hasMethod fs:mix ;
 .
@@ -67,6 +70,7 @@ premium:hummusRoastInstruction
   core:directions "regelmatig schudden"@nl ;
   core:hasComponentUnit [
       core:hasComponent fs:sesameSeed ;
+      flow:weight 40^^xsd:integer ;
     ] ;
   core:hasMethod fs:roast ;
 .
