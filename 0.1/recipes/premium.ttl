@@ -68,9 +68,12 @@ premium:hummusRoastInstruction
   a core:Instruction ;
   a owl:NamedIndividual ;
   core:directions "regelmatig schudden"@nl ;
-  core:hasComponentUnit [
-      core:hasComponent fs:sesameSeed ;
-      core:weight "40"^^xsd:integer ;
-    ] ;
+  core:hasComponentUnit core:RoastComponentUnit1; 
   core:hasMethod fs:roast ;
+.
+
+core:RoastComponentUnit1
+	a core:ComponentUnit ;
+    core:hasComponent fs:sesameSeed ;
+    core:weight "40"^^xsd:integer ;
 .
