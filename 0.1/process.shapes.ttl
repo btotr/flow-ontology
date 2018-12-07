@@ -33,18 +33,17 @@
 process:Input
   a owl:Class ;
 .
-
 process:Process
   a owl:Class ;
   a sh:NodeShape ;
-  rdfs:subClassOf owl:Thing ;
   owl:sameAs core:Method ;
+  sh:rule process:inputRule ;
   sh:rule process:endProcessRule ;
   sh:rule process:inputConnectionRule ;
   sh:rule process:processConnectionRule ;
   sh:rule process:startProcessRule ;
 .
-process:StartProcess
+process:startProcess
   a process:Process ;
   a owl:NamedIndividual ;
 .
@@ -59,7 +58,7 @@ process:endProcessRule
 	 $this process:processConnection process:endProcess .
   } WHERE {
 	$this ^core:hasMethod ?instruction .
-	?instruction !^core:depVariationInstruction ?depInstruction .
+	FILTER NOT EXISTS {?instruction ^core:depVariationInstruction ?depInstruction . }
   }""" ;
   sh:prefixes [
       sh:declare [
@@ -79,6 +78,7 @@ process:inputConnection
 .
 process:inputConnectionRule
   a sh:SPARQLRule ;
+  sh:order 2 ; 
   rdfs:label "add a input connection if there is a  component unit" ;
   sh:construct """CONSTRUCT {
 	$this process:inputConnection ?input .
@@ -102,11 +102,6 @@ process:inputConnectionRule
 .
 process:partOfInput
   a owl:ObjectProperty ;
-.
-process:procesLabel
-  a owl:DatatypeProperty ;
-  a owl:FunctionalProperty ;
-  rdfs:label "process label" ;
 .
 process:processConnection
   a owl:ObjectProperty ;
@@ -141,7 +136,7 @@ process:startProcessRule
 	 process:startProcess process:processConnection $this .
   } WHERE {
 	$this ^core:hasMethod ?instruction .
-	?instruction !core:depVariationInstruction ?depInstruction .
+	FILTER NOT EXISTS {?instruction core:depVariationInstruction ?depInstruction . }
   }""" ;
   sh:prefixes [
       sh:declare [
@@ -156,16 +151,17 @@ process:startProcessRule
         ] ;
     ] ;
 .
-
-
 process:inputRule
   a sh:SPARQLRule ;
-  rdfs:label "add a start process" ;
+  sh:order 2 ; 
+  rdfs:label "add an input process" ;
   sh:construct """CONSTRUCT {
-	  $this process:partOfInput ?input .
-	  ?input rdf:type process:input .
+	  ?componentUnit process:partOfInput ?input .
+	  ?input rdf:type process:Input .
   } WHERE {
-	$this ^core:hasComponentUnit ?componentUnit .
+  	$this ^core:hasMethod ?instruction .
+	?instruction core:hasComponentUnit ?componentUnit .
+	bind (URI(concat("http://flow.recipes/ns/process/#",STRUUID())) as ?input)
   }""" ;
   sh:prefixes [
       sh:declare [
