@@ -13,6 +13,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://flow.recipes/ns/process>
   a owl:Ontology ;
@@ -77,7 +78,6 @@ process:inputConnection
   a owl:ObjectProperty ;
 .
 process:inputConnectionRule
-	# todo fix!
   a sh:SPARQLRule ;
   sh:order 2 ; 
   rdfs:label "add a input connection if there is a  component unit" ;
@@ -154,23 +154,31 @@ process:startProcessRule
 .
 process:inputRule
   a sh:SPARQLRule ;
-  sh:order 2 ; 
+  sh:order 1 ; 
   rdfs:label "add an input process" ;
   sh:construct """CONSTRUCT {
 	  ?componentUnit process:partOfInput ?input .
 	  ?input rdf:type process:Input .
   } WHERE {
   	$this ^core:hasMethod ?instruction .
+  	$this skos:prefLabel ?label .
 	?instruction core:hasComponentUnit ?componentUnit .
-	#TODO group
-	BIND (URI(concat("http://flow.recipes/ns/process/#",STRUUID())) as ?input)
-  } GROUP BY $this """ ;
+	FILTER (lang(?label) = "en") .
+	BIND (URI(concat("http://flow.recipes/ns/process/#", ?label)) as ?input)
+  } """ ;
   sh:prefixes [
       sh:declare [
           sh:namespace "http://flow.recipes/ns/core#"^^xsd:anyURI ;
           sh:prefix "core" ;
         ] ;
     ] ;
+    sh:prefixes [
+      sh:declare [
+          sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+          sh:prefix "skos" ;
+        ] ;
+    ] ;
+    
   sh:prefixes [
       sh:declare [
           sh:namespace "http://flow.recipes/ns/process#"^^xsd:anyURI ;
