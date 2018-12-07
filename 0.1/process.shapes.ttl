@@ -77,6 +77,7 @@ process:inputConnection
   a owl:ObjectProperty ;
 .
 process:inputConnectionRule
+	# todo fix!
   a sh:SPARQLRule ;
   sh:order 2 ; 
   rdfs:label "add a input connection if there is a  component unit" ;
@@ -161,8 +162,9 @@ process:inputRule
   } WHERE {
   	$this ^core:hasMethod ?instruction .
 	?instruction core:hasComponentUnit ?componentUnit .
-	bind (URI(concat("http://flow.recipes/ns/process/#",STRUUID())) as ?input)
-  }""" ;
+	#TODO group
+	BIND (URI(concat("http://flow.recipes/ns/process/#",STRUUID())) as ?input)
+  } GROUP BY $this """ ;
   sh:prefixes [
       sh:declare [
           sh:namespace "http://flow.recipes/ns/core#"^^xsd:anyURI ;
