@@ -143,5 +143,4 @@ flow:Instruction-hasCase
         rdfs:label       "Flow recipes core ontology" ;
         metadata:status  metadata:UnderDevelopmentStatus ;
         <http://topbraid.org/swa#defaultNamespace>
-                "http://flow.recipes/0.1#" ;
-        owl:imports      <http://datashapes.org/dash> .
+                "http://flow.recipes/0.1#"  .
