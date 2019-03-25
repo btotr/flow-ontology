@@ -12,36 +12,35 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://flow.recipes/ns/core>
-  a owl:Ontology ;
+  rdf:type owl:Ontology ;
   rdfs:label "Flow recipes core ontology" ;
   owl:imports fs: ;
   owl:versionInfo "0.0.1" ;
 .
-
 flow:Component
-  a owl:Class ;
+  rdf:type owl:Class ;
   rdfs:comment "An ingredient used in the instruction. This could be either a raw ingredient such as salt or a recipe which has the function as an ingredient such as custard" ;
   rdfs:label "Component" ;
   rdfs:subClassOf owl:Thing ;
 .
 flow:ComponentUnit
-  a owl:Class ;
+  rdf:type owl:Class ;
   rdfs:subClassOf owl:Thing ;
 .
 flow:Ingredient
-  a owl:Class ;
+  rdf:type owl:Class ;
   rdfs:comment "an ingredient used for a particular instruction." ;
   rdfs:label "Ingredient"@en ;
   rdfs:subClassOf flow:Component ;
   rdfs:subClassOf skos:Concept ;
   owl:disjointWith flow:Method ;
   owl:equivalentClass [
-      a owl:Class ;
+      rdf:type owl:Class ;
       owl:equivalentClass flow:Ingredient ;
       owl:intersectionOf (
           skos:Concept
           [
-            a owl:Restriction ;
+            rdf:type owl:Restriction ;
             owl:hasValue fs:ingredientsScheme ;
             owl:onProperty skos:inScheme ;
           ]
@@ -49,29 +48,29 @@ flow:Ingredient
     ] ;
 .
 flow:Instruction
-  a owl:Class ;
+  rdf:type owl:Class ;
   rdfs:label "Instruction" ;
   rdfs:subClassOf owl:Thing ;
   rdfs:subClassOf [
-      a owl:Restriction ;
+      rdf:type owl:Restriction ;
       owl:minCardinality 1 ;
       owl:onProperty flow:hasMethod ;
     ] ;
 .
 flow:Method
-  a owl:Class ;
+  rdf:type owl:Class ;
   rdfs:comment "some method or preperation which definies the instruction." ;
   rdfs:label "Method" ;
   rdfs:subClassOf owl:Thing ;
   rdfs:subClassOf skos:Concept ;
   owl:disjointWith flow:Ingredient ;
   owl:equivalentClass [
-      a owl:Class ;
+      rdf:type owl:Class ;
       owl:equivalentClass flow:Method ;
       owl:intersectionOf (
           skos:Concept
           [
-            a owl:Restriction ;
+            rdf:type owl:Restriction ;
             owl:hasValue fs:methodsScheme ;
             owl:onProperty skos:inScheme ;
           ]
@@ -79,73 +78,74 @@ flow:Method
     ] ;
 .
 flow:Recipe
-  a owl:Class ;
+  rdf:type owl:Class ;
   rdfs:comment "A recipe could stand on his own or act as an ingredient for another recipe." ;
   rdfs:label "Recipe" ;
   rdfs:subClassOf flow:Component ;
 .
 flow:componentAddition
-  a owl:DatatypeProperty ;
-  a owl:FunctionalProperty ;
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
   rdfs:domain flow:ComponentUnit ;
   rdfs:label "component addition" ;
   rdfs:range xsd:string ;
 .
 flow:depVariationInstruction
-  a owl:ObjectProperty ;
+  rdf:type owl:ObjectProperty ;
   rdfs:comment "instruction depends on some variation of another instruction" ;
   rdfs:domain flow:Instruction ;
   rdfs:range flow:Instruction ;
 .
 flow:directions
-  a owl:DatatypeProperty ;
-  a owl:FunctionalProperty ;
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
   rdfs:domain flow:Instruction ;
   rdfs:label "directions" ;
   rdfs:range xsd:string ;
 .
-
 flow:hasComponent
-  a owl:ObjectProperty ;
+  rdf:type owl:ObjectProperty ;
   rdfs:domain flow:ComponentUnit ;
   rdfs:label "has component" ;
   rdfs:range flow:Component ;
 .
 flow:hasComponentUnit
-  a owl:ObjectProperty ;
+  rdf:type owl:ObjectProperty ;
   rdfs:domain flow:Instruction ;
   rdfs:label "has component unit" ;
   rdfs:range flow:ComponentUnit ;
 .
 flow:hasMethod
-  a owl:FunctionalProperty ;
-  a owl:ObjectProperty ;
+  rdf:type owl:FunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
   rdfs:domain flow:Instruction ;
   rdfs:label "hasMethod"@en ;
   rdfs:range flow:Method ;
 .
 flow:instructions
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain flow:Recipe ;
 .
+flow:variation
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:SymmetricProperty ;
+  rdfs:comment "A variation of the instruction. Those instructions must be interchangeable. For example bread shape batard and bread shape boulle instruction" ;
+  rdfs:domain flow:Instruction ;
+  rdfs:range flow:Instruction ;
+.
 flow:weight
-  a owl:DatatypeProperty ;
-  a owl:FunctionalProperty ;
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
   rdfs:domain flow:ComponentUnit ;
   rdfs:label "weight" ;
   rdfs:range xsd:integer ;
 .
-
+fs:aanbranden
+  rdf:type skos:Concept ;
+.
 rdfs:hasInstruction
-  a owl:ObjectProperty ;
+  rdf:type owl:ObjectProperty ;
   rdfs:comment "shortcut to an instruction" ;
   rdfs:label "Instruction" ;
-  rdfs:range flow:Instruction ;
-.
-flow:variation
-  a owl:ObjectProperty ;
-  a owl:SymmetricProperty ;
-  rdfs:comment "A variation of the instruction. Those instructions must be interchangeable. For example bread shape batard and bread shape boulle instruction" ;
-  rdfs:domain flow:Instruction ;
   rdfs:range flow:Instruction ;
 .

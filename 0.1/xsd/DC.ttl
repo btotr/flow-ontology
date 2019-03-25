@@ -1,0 +1,222 @@
+# baseURI: http://www.omg.org/spec/DD/20100524/DC
+# imports: http://topbraid.org/sxml
+# imports: http://www.linkedmodel.org/schema/dtype
+# prefix: DC
+
+@prefix DC: <http://www.omg.org/spec/DD/20100524/DC#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dtype: <http://www.linkedmodel.org/schema/dtype#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sxml: <http://topbraid.org/sxml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.omg.org/spec/DD/20100524/DC>
+  rdf:type owl:Ontology ;
+  owl:imports <http://topbraid.org/sxml> ;
+  owl:imports <http://www.linkedmodel.org/schema/dtype> ;
+  owl:versionInfo "Created with TopBraid Composer from the XML Schema(s) http://www.omg.org/spec/DD/20100524/DC" ;
+.
+DC:Bounds
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DC#Bounds" ;
+  rdfs:label "Bounds" ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:double ;
+      owl:onProperty DC:height ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:double ;
+      owl:onProperty DC:width ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:double ;
+      owl:onProperty DC:x ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:double ;
+      owl:onProperty DC:y ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty DC:height ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty DC:width ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty DC:x ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty DC:y ;
+    ] ;
+.
+DC:Font
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DC#Font" ;
+  rdfs:label "Font" ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:boolean ;
+      owl:onProperty DC:isBold ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:boolean ;
+      owl:onProperty DC:isItalic ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:boolean ;
+      owl:onProperty DC:isStrikeThrough ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:boolean ;
+      owl:onProperty DC:isUnderline ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:double ;
+      owl:onProperty DC:size ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty DC:name ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DC:isBold ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DC:isItalic ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DC:isStrikeThrough ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DC:isUnderline ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DC:name ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DC:size ;
+    ] ;
+.
+DC:Point
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DC#Point" ;
+  rdfs:label "Point" ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:double ;
+      owl:onProperty DC:x ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:double ;
+      owl:onProperty DC:y ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty DC:x ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty DC:y ;
+    ] ;
+.
+DC:height
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DC#height" ;
+  rdfs:label "height" ;
+.
+DC:isBold
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DC#isBold" ;
+  rdfs:label "is bold" ;
+.
+DC:isItalic
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DC#isItalic" ;
+  rdfs:label "is italic" ;
+.
+DC:isStrikeThrough
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DC#isStrikeThrough" ;
+  rdfs:label "is strike through" ;
+.
+DC:isUnderline
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DC#isUnderline" ;
+  rdfs:label "is underline" ;
+.
+DC:name
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DC#name" ;
+  rdfs:label "name" ;
+.
+DC:size
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DC#size" ;
+  rdfs:label "size" ;
+.
+DC:width
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DC#width" ;
+  rdfs:label "width" ;
+.
+DC:x
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DC#x" ;
+  rdfs:label "x" ;
+.
+DC:y
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DC#y" ;
+  rdfs:label "y" ;
+.
+skos:prefLabel
+  rdf:type owl:AnnotationProperty ;
+  rdfs:label "pref label" ;
+.

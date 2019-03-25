@@ -1,0 +1,54 @@
+# baseURI: file:/Users/colinmeerveld/git/flow-ontology/0.1/run.ttl
+# imports: file:///flow-ontology/0.1/BPMN-recipes/biefstuk.xml
+# imports: file:///flow-ontology/0.1/xsd/BPMN20.xsd
+# imports: http://flow.recipes/ns/core
+# imports: http://flow.recipes/ns/recipe
+# imports: http://flow.recipes/ns/scheme#
+
+@prefix MODEL: <http://www.omg.org/spec/BPMN/20100524/MODEL#> .
+@prefix biefstuk: <file:///flow-ontology/0.1/BPMN-recipes/biefstuk.xml#> .
+@prefix core: <http://flow.recipes/ns/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix recipe: <http://flow.recipes/ns/recipe#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///Users/colinmeerveld/git/flow-ontology/0.1/run.ttl>
+  rdf:type owl:Ontology ;
+  owl:imports <file:///flow-ontology/0.1/BPMN-recipes/biefstuk.xml> ;
+  owl:imports <http://flow.recipes/ns/core> ;
+  owl:imports <http://flow.recipes/ns/process> ;
+  owl:imports <http://www.omg.org/spec/DD/20100524/DI> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports sh: ;
+  sh:declare <file:///flow-ontology/0.1/BPMN-recipes/biefstuk.xml> ;
+  sh:declare <http://flow.recipes/ns/process#> ;
+  sh:declare <http://www.w3.org/2004/02/skos/core> ;
+.
+<file:/Users/colinmeerveld/git/flow-ontology/0.1/run.ttl>
+  rdf:type owl:Ontology ;
+  owl:imports <file:///flow-ontology/0.1/BPMN-recipes/biefstuk.xml> ;
+  owl:imports <file:///flow-ontology/0.1/xsd/BPMN20.xsd> ;
+  owl:imports <http://flow.recipes/ns/core> ;
+  owl:imports <http://flow.recipes/ns/recipe> ;
+  owl:imports <http://flow.recipes/ns/scheme#> ;
+.
+core:BPMN-taskname-to-SKOS-concept
+  rdf:type sh:SPARQLRule ;
+  rdfs:label "BPMN taskname to SKOS concept" ;
+  sh:construct """CONSTRUCT {
+	?concept <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://www.w3.org/2004/02/skos/core#concept> .
+    ?concept  <https://www.w3.org/2004/02/skos/core#prefLabel> ?name
+}
+WHERE {
+    ?this <file:///flow-ontology/0.1/BPMN-recipes/biefstuk.xml#name-bpmntask> ?name .
+	BIND(IRI(CONCAT(\"http://flow.recipes/ns/scheme#\", STR(?name))) AS ?concept)
+}""" ;
+.
+MODEL:task
+  rdf:type sh:NodeShape ;
+  sh:rule core:BPMN-taskname-to-SKOS-concept ;
+.

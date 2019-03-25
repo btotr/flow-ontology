@@ -1,0 +1,272 @@
+# baseURI: http://www.omg.org/spec/DD/20100524/DI
+# imports: http://topbraid.org/sxml
+# imports: http://www.linkedmodel.org/schema/dtype
+# imports: http://www.omg.org/spec/DD/20100524/DC
+# prefix: DI
+
+@prefix DC: <http://www.omg.org/spec/DD/20100524/DC#> .
+@prefix DI: <http://www.omg.org/spec/DD/20100524/DI#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dtype: <http://www.linkedmodel.org/schema/dtype#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sxml: <http://topbraid.org/sxml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.omg.org/spec/DD/20100524/DI>
+  rdf:type owl:Ontology ;
+  owl:imports <http://topbraid.org/sxml> ;
+  owl:imports <http://www.linkedmodel.org/schema/dtype> ;
+  owl:imports <http://www.omg.org/spec/DD/20100524/DC> ;
+  owl:versionInfo "Created with TopBraid Composer from the XML Schema(s) http://www.omg.org/spec/DD/20100524/DI" ;
+.
+DI:Diagram
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#Diagram" ;
+  rdfs:label "Diagram" ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:ID ;
+      owl:onProperty DI:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:double ;
+      owl:onProperty DI:resolution ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty DI:documentation ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty DI:name ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DI:documentation ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DI:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DI:name ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DI:resolution ;
+    ] ;
+.
+DI:DiagramElement
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#DiagramElement" ;
+  rdfs:label "Diagram element" ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "false"^^xsd:boolean ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom DI:DiagramElement-extension ;
+      owl:onProperty DI:extensionRef ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:ID ;
+      owl:onProperty DI:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DI:extensionRef ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DI:id ;
+    ] ;
+.
+DI:DiagramElement-extension
+  rdf:type owl:Class ;
+  rdfs:label "Diagram element-extension" ;
+.
+DI:Edge
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#Edge" ;
+  rdfs:label "Edge" ;
+  rdfs:subClassOf DI:DiagramElement ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "false"^^xsd:boolean ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom DC:Point ;
+      owl:onProperty DI:waypointRef ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "2"^^xsd:int ;
+      owl:onProperty DI:waypointRef ;
+    ] ;
+.
+DI:Label
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#Label" ;
+  rdfs:label "Label" ;
+  rdfs:subClassOf DI:Node ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "false"^^xsd:boolean ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom DC:Bounds ;
+      owl:onProperty DI:boundsRef ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DI:boundsRef ;
+    ] ;
+.
+DI:LabeledEdge
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#LabeledEdge" ;
+  rdfs:label "Labeled edge" ;
+  rdfs:subClassOf DI:Edge ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "false"^^xsd:boolean ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom DI:LabeledEdge-extension ;
+      owl:onProperty DI:extensionRef ;
+    ] ;
+.
+DI:LabeledEdge-extension
+  rdf:type owl:Class ;
+  rdfs:label "Labeled edge-extension" ;
+.
+DI:LabeledShape
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#LabeledShape" ;
+  rdfs:label "Labeled shape" ;
+  rdfs:subClassOf DI:Shape ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "false"^^xsd:boolean ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom DI:LabeledShape-extension ;
+      owl:onProperty DI:extensionRef ;
+    ] ;
+.
+DI:LabeledShape-extension
+  rdf:type owl:Class ;
+  rdfs:label "Labeled shape-extension" ;
+.
+DI:Node
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#Node" ;
+  rdfs:label "Node" ;
+  rdfs:subClassOf DI:DiagramElement ;
+.
+DI:Plane
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#Plane" ;
+  rdfs:label "Plane" ;
+  rdfs:subClassOf DI:Node ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "false"^^xsd:boolean ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom DI:DiagramElement ;
+      owl:onProperty DI:diagramElementRef ;
+    ] ;
+.
+DI:Shape
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#Shape" ;
+  rdfs:label "Shape" ;
+  rdfs:subClassOf DI:Node ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "false"^^xsd:boolean ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom DC:Bounds ;
+      owl:onProperty DI:boundsRef ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty DI:boundsRef ;
+    ] ;
+.
+DI:Style
+  rdf:type owl:Class ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#Style" ;
+  rdfs:label "Style" ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      sxml:isAttribute "true"^^xsd:boolean ;
+      owl:allValuesFrom xsd:ID ;
+      owl:onProperty DI:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty DI:id ;
+    ] ;
+.
+DI:boundsRef
+  rdf:type owl:ObjectProperty ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#Bounds" ;
+  rdfs:label "bounds ref" ;
+.
+DI:diagramElementRef
+  rdf:type owl:ObjectProperty ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#DiagramElement" ;
+  rdfs:label "diagram element ref" ;
+.
+DI:documentation
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DI#documentation" ;
+  rdfs:label "documentation" ;
+.
+DI:extensionRef
+  rdf:type owl:ObjectProperty ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#extension" ;
+  rdfs:label "extension ref" ;
+.
+DI:id
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DI#id" ;
+  rdfs:label "id" ;
+.
+DI:name
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DI#name" ;
+  rdfs:label "name" ;
+.
+DI:resolution
+  rdf:type owl:DatatypeProperty ;
+  sxml:attribute "http://www.omg.org/spec/DD/20100524/DI#resolution" ;
+  rdfs:label "resolution" ;
+.
+DI:waypointRef
+  rdf:type owl:ObjectProperty ;
+  sxml:tag "http://www.omg.org/spec/DD/20100524/DI#waypoint" ;
+  rdfs:label "waypoint ref" ;
+.
+skos:prefLabel
+  rdf:type owl:AnnotationProperty ;
+  rdfs:label "pref label" ;
+.
