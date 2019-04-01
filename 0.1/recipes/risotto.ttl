@@ -1,0 +1,18 @@
+@prefix constraints: <http://flow.recipes/ns/constraints#> .
+@prefix core: <http://flow.recipes/ns/core#> .
+@prefix fs: <http://flow.recipes/ns/scheme#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix risotto: <http://flow.recipes/ns/recipe/risotto#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://flow.recipes/ns/recipe/risotto>
+  a owl:Ontology ;
+  spin:imports <http://topbraid.org/spin/owlrl-all> ;
+  owl:imports <http://flow.recipes/ns/constraints> ;
+  owl:imports <http://flow.recipes/ns/core> ;
+  owl:imports <http://flow.recipes/ns/scheme#> ;
+.
+
