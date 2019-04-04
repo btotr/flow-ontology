@@ -9,19 +9,11 @@ schema
 		interface: "http://flow.recipes/ns/interface/ (default)",
 		recipe: "http://flow.recipes/ns/recipe#"
 	)
-	@groups(
-		RecipeGroup: {
-			label: "Recipe fields"
-		}
-	)
-	@extraRDF(
-		turtle: "@prefix core: <http://flow.recipes/ns/core#> .\n@prefix dash: <http://datashapes.org/dash#> .\n@prefix graphql: <http://datashapes.org/graphql#> .\n@prefix interface: <http://flow.recipes/ns/interface/> .\n@prefix owl: <http://www.w3.org/2002/07/owl#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix recipe: <http://flow.recipes/ns/recipe#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\ninterface:Recipe\n  sh:targetClass core:Recipe ;\n.\n<http://flow.recipes/ns/recipe/premium#Recipe_1>\n  interface:id \"testid\" ;\n  interface:name \"testname\" ;\n.\n"
-	)
 {
 	query: Query
 }
 
-type Instruction {
+type Instruction @uri(template: "Instruction:{$id}")  @shape(targetClass: Instruction) {
 	id: ID!
 	name: String!
 }
@@ -31,8 +23,8 @@ type Query {
 	instruction(id: ID!): [Instruction]
 }
 
-type Recipe @uri(template: "Recipe:{$id}") {
+type Recipe @uri(template: "Recipe:{$id}")  @shape(targetClass: Recipe) {
 	id: ID!
 	name: String!
-	rdfs_label: String! @display(label: "recipe name", group: RecipeGroup)
+	rdfs_label: String!
 }
