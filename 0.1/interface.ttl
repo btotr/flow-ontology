@@ -1,0 +1,31 @@
+# baseURI: http://flow.recipes/ns/interface
+# imports: http://datashapes.org/graphql
+# imports: http://flow.recipes/ns/core.shapes
+# imports: http://flow.recipes/ns/recipe
+# prefix: interface
+
+@prefix flow: <http://flow.recipes/ns/core#> .
+@prefix graphql: <http://datashapes.org/graphql> .
+@prefix interface: <http://flow.recipes/ns/interface> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix recipe: <http://flow.recipes/ns/recipe#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+flow:recipe a sh:NodeShape .
+
+<http://flow.recipes/ns/interface>
+  a owl:Ontology ;
+  owl:imports <http://datashapes.org/graphql> ;
+  owl:imports <http://flow.recipes/ns/core.shapes> ;
+  owl:imports <http://flow.recipes/ns/recipe> ;
+.
+interface:flow
+  a graphql:Schema ;
+  rdfs:comment "http://<ip>:8083/tbl/graphql/flow" ;
+  rdfs:comment "{__schema {types {name} }}";
+  graphql:name "flow" ;
+  graphql:publicClass flow:Recipe ;
+.
