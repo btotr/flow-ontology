@@ -1,0 +1,32 @@
+schema
+	@classes
+	@graph (
+		uri: "http://flow.recipes/ns/interface/",
+		imports: [
+			"http://flow.recipes/ns/recipe"
+		]
+	)
+	@prefixes (
+		rdfs: "http://www.w3.org/2000/01/rdf-schema/",
+		core: "http://flow.recipes/ns/core/",
+		recipe: "http://flow.recipes/ns/recipe/",
+		interface: "http://flow.recipes/ns/interface/ (default)"
+	) {
+	query: Query
+}
+
+type Query {
+	recipe (id: ID!): [Recipe]
+	instruction (id: ID!): [Instruction]
+}
+
+type Recipe @shape(targetClass: core_Recipe) @uri(template: "Recipe:{$id}") {
+	id: ID!
+	name: String!
+	rdfs_label: String!
+}
+
+type Instruction {
+	id: ID!
+	name: String!
+}

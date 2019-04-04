@@ -1,12 +1,7 @@
-# baseURI: http://flow.recipes/ns/recipe/premium
-# imports: http://flow.recipes/ns/constraints
-# imports: http://flow.recipes/ns/core
-# imports: http://flow.recipes/ns/scheme#
-# prefix: premium
-
 @prefix constraints: <http://flow.recipes/ns/constraints#> .
 @prefix core: <http://flow.recipes/ns/core#> .
 @prefix fs: <http://flow.recipes/ns/scheme#> .
+@prefix interface: <http://flow.recipes/ns/interface#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix premium: <http://flow.recipes/ns/recipe/premium#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -14,12 +9,21 @@
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+core:RoastComponentUnit1
+  a core:ComponentUnit ;
+  core:hasComponent fs:sesameSeed ;
+  core:weight 40 ;
+.
 <http://flow.recipes/ns/recipe/premium>
   a owl:Ontology ;
-  spin:imports <http://topbraid.org/spin/owlrl-all> ;
-  owl:imports <http://flow.recipes/ns/constraints> ;
-  owl:imports <http://flow.recipes/ns/core> ;
-  owl:imports fs: ;
+.
+premium:Recipe_1
+  a core:Recipe ;
+  rdfs:label "Recipe 1" ;
+.
+premium:Recipe_2
+  a core:Recipe ;
+  rdfs:label "Recipe 2" ;
 .
 premium:hummus
   a core:Recipe ;
@@ -39,19 +43,21 @@ premium:hummusGrindInstruction
   core:hasComponentUnit [
       core:componentAddition "½" ;
       core:hasComponent fs:lemonJuice ;
-      core:weight "20"^^xsd:integer ;
+      core:weight 20 ;
     ] ;
   core:hasComponentUnit [
       core:hasComponent fs:cayennePepper ;
     ] ;
   core:hasComponentUnit [
       core:hasComponent fs:chickPea ;
-      core:weight "250"^^xsd:integer ;
+      core:weight 250 ;
     ] ;
   core:hasComponentUnit [
       core:hasComponent fs:salt ;
     ] ;
   core:hasMethod fs:grind ;
+  <http://flow.recipes/ns/interface#id:> "test" ;
+  <http://flow.recipes/ns/interface#name:> "hummus Grind Instruction" ;
 .
 premium:hummusMixInstruction
   a core:Instruction ;
@@ -60,7 +66,7 @@ premium:hummusMixInstruction
   core:hasComponentUnit [
       core:componentAddition "x-vierge" ;
       core:hasComponent fs:oliveOil ;
-      core:weight "20"^^xsd:integer ;
+      core:weight 20 ;
     ] ;
   core:hasMethod fs:mix ;
 .
@@ -68,12 +74,6 @@ premium:hummusRoastInstruction
   a core:Instruction ;
   a owl:NamedIndividual ;
   core:directions "regelmatig schudden"@nl ;
-  core:hasComponentUnit core:RoastComponentUnit1; 
+  core:hasComponentUnit core:RoastComponentUnit1 ;
   core:hasMethod fs:roast ;
-.
-
-core:RoastComponentUnit1
-	a core:ComponentUnit ;
-    core:hasComponent fs:sesameSeed ;
-    core:weight "40"^^xsd:integer ;
 .
