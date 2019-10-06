@@ -4,27 +4,16 @@
 @prefix interface: <http://flow.recipes/ns/interface#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix premium: <http://flow.recipes/ns/recipe/premium#> .
+@prefix : <http://flow.recipes/ns/recipe/premium#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-core:RoastComponentUnit1
-  a core:ComponentUnit ;
-  core:hasComponent fs:sesameSeed ;
-  core:weight 40 ;
-.
 <http://flow.recipes/ns/recipe/premium>
   a owl:Ontology ;
 .
-premium:Recipe_1
-  a core:Recipe ;
-  rdfs:label "Recipe 1" ;
-.
-premium:Recipe_2
-  a core:Recipe ;
-  rdfs:label "Recipe 2" ;
-.
+
 premium:hummus
   a core:Recipe ;
   a owl:NamedIndividual ;
@@ -56,8 +45,6 @@ premium:hummusGrindInstruction
       core:hasComponent fs:salt ;
     ] ;
   core:hasMethod fs:grind ;
-  <http://flow.recipes/ns/interface#id:> "test" ;
-  <http://flow.recipes/ns/interface#name:> "hummus Grind Instruction" ;
 .
 premium:hummusMixInstruction
   a core:Instruction ;
@@ -74,6 +61,10 @@ premium:hummusRoastInstruction
   a core:Instruction ;
   a owl:NamedIndividual ;
   core:directions "regelmatig schudden"@nl ;
-  core:hasComponentUnit core:RoastComponentUnit1 ;
+  core:hasComponentUnit [
+    a core:ComponentUnit ;
+  	core:hasComponent fs:sesameSeed ;
+  	core:weight 40 ;
+  ] ;
   core:hasMethod fs:roast ;
 .

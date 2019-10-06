@@ -1,0 +1,131 @@
+# baseURI: http://flow.recipes/ns/interface/
+# imports: http://datashapes.org/graphql
+# imports: http://flow.recipes/ns/recipe
+# prefix: interface
+
+@prefix core: <http://flow.recipes/ns/core#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix graphql: <http://datashapes.org/graphql#> .
+@prefix interface: <http://flow.recipes/ns/interface/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix recipe: <http://flow.recipes/ns/recipe#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+interface:
+  a graphql:Schema ;
+  a owl:Ontology ;
+  graphql:defaultPrefix interface:PrefixDeclaration ;
+  graphql:publicShape interface:Instruction ;
+  graphql:publicShape interface:Query ;
+  graphql:publicShape interface:Recipe ;
+  graphql:queryShape interface:Query ;
+  owl:imports <http://datashapes.org/graphql> ;
+  owl:imports <http://flow.recipes/ns/recipe> ;
+  sh:declare interface:PrefixDeclaration ;
+.
+interface:Instruction
+  a sh:NodeShape ;
+  graphql:uriTemplate "Instruction:{$id}" ;
+  sh:property interface:Instruction-id ;
+  sh:property interface:Instruction-name ;
+  sh:targetClass interface:Instruction ;
+.
+interface:Instruction-id
+  a sh:PropertyShape ;
+  sh:path interface:id ;
+  graphql:isIDField true ;
+  sh:datatype xsd:string ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:order "0"^^xsd:decimal ;
+.
+interface:Instruction-name
+  a sh:PropertyShape ;
+  sh:path interface:name ;
+  sh:datatype xsd:string ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:order "1"^^xsd:decimal ;
+.
+interface:PrefixDeclaration
+  a sh:PrefixDeclaration ;
+  sh:namespace "http://flow.recipes/ns/interface/"^^xsd:anyURI ;
+  sh:prefix "interface" ;
+.
+interface:Query
+  a sh:NodeShape ;
+  sh:property interface:Query-instruction ;
+  sh:property interface:Query-recipe ;
+.
+interface:Query-instruction
+  a sh:PropertyShape ;
+  sh:path interface:instruction ;
+  graphql:inputValue [
+      a graphql:InputValue ;
+      graphql:name "id" ;
+      graphql:type [
+          a graphql:NonNullType ;
+          graphql:type [
+              a graphql:NamedType ;
+              graphql:name "ID" ;
+            ] ;
+        ] ;
+      sh:order "0"^^xsd:decimal ;
+    ] ;
+  sh:node interface:Instruction ;
+  sh:order "1"^^xsd:decimal ;
+.
+interface:Query-recipe
+  a sh:PropertyShape ;
+  sh:path interface:recipe ;
+  graphql:inputValue [
+      a graphql:InputValue ;
+      graphql:name "id" ;
+      graphql:type [
+          a graphql:NonNullType ;
+          graphql:type [
+              a graphql:NamedType ;
+              graphql:name "ID" ;
+            ] ;
+        ] ;
+      sh:order "0"^^xsd:decimal ;
+    ] ;
+  sh:node interface:Recipe ;
+  sh:order "0"^^xsd:decimal ;
+.
+interface:Recipe
+  a sh:NodeShape ;
+  graphql:uriTemplate "Recipe:{$id}" ;
+  sh:property interface:Recipe-id ;
+  sh:property interface:Recipe-name ;
+  sh:property interface:Recipe-rdfs_label ;
+  sh:targetClass interface:Recipe ;
+.
+interface:Recipe-id
+  a sh:PropertyShape ;
+  sh:path interface:id ;
+  graphql:isIDField true ;
+  sh:datatype xsd:string ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:order "0"^^xsd:decimal ;
+.
+interface:Recipe-name
+  a sh:PropertyShape ;
+  sh:path interface:name ;
+  sh:datatype xsd:string ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:order "1"^^xsd:decimal ;
+.
+interface:Recipe-rdfs_label
+  a sh:PropertyShape ;
+  sh:path rdfs:label ;
+  sh:datatype xsd:string ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:order "2"^^xsd:decimal ;
+.
