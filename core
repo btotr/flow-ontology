@@ -138,5 +138,13 @@ flow:weight
   rdf:type owl:FunctionalProperty ;
   rdfs:domain flow:ComponentUnit ;
   rdfs:label "weight" ;
-  rdfs:range xsd:integer ;
+  rdfs:range xsd:string ;
+.
+
+flow:time
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
+  rdfs:domain flow:Instruction ;
+  rdfs:label "time" ;
+  rdfs:range xsd:string ;
 .
